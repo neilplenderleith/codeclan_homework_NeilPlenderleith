@@ -1,0 +1,9 @@
+Create a folder in the CodeClan directory where you’re keeping your work files. Call it codeclan_homework_yourname (insert your name as something like DelMiddlemiss).
+Initialise a Git repository in the new homework folder.
+Create a week_01 folder, then a day_1 folder inside that.
+Create a couple of .txt files in the folder.
+Commit the files.
+Make a change to each file.
+Commit the changes.
+Publish your repository on Github. This will be the repository all of your homework gets pushed to, the instructors will pull your work every morning to see how you got on. Call the repo codeclan_homework_yourname (just like the folder) and remember to make it public!
+Make some more changes to your files (or even add more) and practice committing and pushing your work.
