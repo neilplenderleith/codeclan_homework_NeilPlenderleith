@@ -86,7 +86,7 @@ Calculate the change in income for each state of these seven states (states star
 
 ```{r}
 abc_states %>% 
-  mutate(income_change = (Y2008 - Y2002))
+  mutate(income_change = (Y2008 - Y2002), .before = Y2002)
 ```
 
 
