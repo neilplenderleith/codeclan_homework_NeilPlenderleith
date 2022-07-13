@@ -110,4 +110,3 @@ drinks_content %>%
   
 
 ```
-
