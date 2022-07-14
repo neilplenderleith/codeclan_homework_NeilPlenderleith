@@ -54,6 +54,13 @@ movies_selected %>%
   summarise(title_na = sum(is.na(title)), 
             runtime_na = sum(is.na(runtime)), 
             budget_na = sum(is.na(budget)))
+# 
+# movies_selected %>% 
+#   summarise(across(.fns = ~sum(is.na(.x)))) from the solutions 
+
+# the above answer code explained: .col first argument isnt needed as we want all columns
+# therefore the second argument needs to be called (ie the .fns argument)
+# ~ tells it not to return the answer straight away until the operation is finished (ie the whole of the sum fucntion(iteration))
 ```
 
 
@@ -158,6 +165,10 @@ movies %>%
   select(where(is.character)) %>% 
   summarise(across(.cols = everything(), ~ sum(is.na(.x))))
 
+# 
+# movies %>%a
+#   summarise(across(where(is.numeric), ~sum(is.na(.x)))) much better code from the answers - telling it the columns inside the across function rather than having to use the select function first
+
 ```
 ```{r}
 
@@ -165,4 +176,6 @@ movies %>%
   select(where(is.numeric)) %>% 
   summarise(across(.cols = everything(), ~ sum(is.na(.x))))
   
+
+# better code from answers see above chunk comments
 ```
