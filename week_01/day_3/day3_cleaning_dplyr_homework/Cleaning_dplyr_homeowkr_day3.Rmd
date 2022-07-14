@@ -19,8 +19,15 @@ After you’ve read in the data and assigned it to a variable with a useful name
 glimpse(movies)
 summary(movies)
 view(movies)
-# For Future reference - count NA values by column, arrange/count columns to determine 0 values, perhaps count chrater columns to determine if any are one or two length - these could be suspect
+# For Future reference - count NA values by column, arrange/count columns to determine 0 values, count number of blank entries!, perhaps count chrater columns to determine if any are one or two length - these could be suspect
 # The data isnt really in bad shape. As seen below there are few NA values although there are a few 0 values which could be altered here and there
+
+# HOMEWORK SOLUTION FROM ANSWERS:
+#   
+#   there seems to be a lot of NAs in the homepage and tagline columns
+# there are two columns: original_title and title that seem to contain similar things
+# there’s a lot of movies with a budget and revenue of 0 - presumably missing data
+# you’d lose 3310 out of 4803 rows if you dropped all NAs - that’s a bit much, so probably better to deal with them in some other way
 
 ```
 
@@ -82,13 +89,22 @@ Question 6.
 Finally, use the slice_min and slice_max functions on movies_imputed to get the movies with the 10 shortest and 10 longest runtimes.
 
 ```{r}
-movies_imputed %>% 
-  arrange(desc(runtime)) %>% 
-  slice_head(n = 10)
+# movies_imputed %>% 
+#   arrange(desc(runtime)) %>% 
+#   slice_head(n = 10)
+# 
+# movies_imputed %>% 
+#   arrange(desc(runtime)) %>% 
+#   slice_tail(n = 10) Read this question slightly wrong - used the wrong function but got the same answer
 
 movies_imputed %>% 
-  arrange(desc(runtime)) %>% 
-  slice_tail(n = 10)
+  slice_min(runtime, n = 10)
+
+
+movies_imputed %>% 
+  slice_max(runtime, n = 10)
+
+
 ```
 
 
@@ -120,11 +136,11 @@ Save this into a new variable called movie_budgets.
 ```{r}
 
 movie_budgets <- movies_imputed %>% 
-  mutate(budget_type = case_when(budget < 12000000 ~ "Small budget",
-                                 budget < 40000000 ~ "Medium Budget",
-                                 TRUE ~ "Big budget"), .after = budget
+  mutate(budget_type = case_when(budget < 12e6 ~ "Small budget",
+                                 budget < 40e6 ~ "Medium Budget",
+                                 TRUE ~ "Big budget"), .after = budget # an alternative to this upon looking at the answers would be budget > 40e6 ~ "Big Budget" perhaps i was being slightly lazy?
          )
-movie_budgets
+
 ```
 
 
@@ -137,17 +153,16 @@ Question 2.
 Take the original dataset with all the variables. Using across and where, summarise the number of missing values, first across all columns of type character, and then across all columns of type numeric.
 
 ```{r}
+
 movies %>% 
   select(where(is.character)) %>% 
   summarise(across(.cols = everything(), ~ sum(is.na(.x))))
-  
 
 ```
 ```{r}
+
 movies %>% 
   select(where(is.numeric)) %>% 
   summarise(across(.cols = everything(), ~ sum(is.na(.x))))
   
-
 ```
-
