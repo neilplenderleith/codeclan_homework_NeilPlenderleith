@@ -11,6 +11,7 @@ library(skimr)
 library(janitor)
 library(lubridate)
 library(anytime)
+library(ggplot2)
 books <- read.csv("books.csv")
 ```
 
@@ -150,17 +151,118 @@ languages_percent
 ### Best years for book writing by average review 
 
 anydate() and anytime() very useful functions for turning character dates into <date>
-from the epackage anytime
+from the package anytime
 
 ```{r}
 
 books_date <- books_clean %>% 
   mutate(pub_date = anydate(publication_date), year_written = year(pub_date)) %>% 
   group_by(year_written) %>% 
-  summarise(rating_per_year = mean(average_rating), no_ratings_per_year = n()) %>% 
-  filter(no_ratings_per_year >= 5) %>% 
+  summarise(rating_per_year = round(mean(average_rating), 2), no_ratings_per_year = n()) %>% 
+  filter(no_ratings_per_year >= 4) %>% 
   slice_max(rating_per_year, n = 10)
+  books_date
+  
+  # ungroup()
+  #  ggplot(books_date, aes(x = year_written, y = rating_per_year)) +
+  #   geom_point() + 
+  #   geom_smooth()
+  
+  
+  
+ 
 
-books_date
+```
+
+# Multiple Authors
+
+How many books are authored by multiple authors? Looking at the data multiple authors are separated by "/" character so if we check for that in each author and count it should give us the data.
+
+Here we use the base R function grepl which tests if a string is contained in a vector and returns T/F
+
+```{r}
+
+book_solo_yn <- books_clean %>% 
+  summarise(multi_author = grepl("/", books_clean$authors, fixed = T)) %>% 
+  count(multi_author) %>% 
+  mutate(multi_authored = if_else(multi_author == F, "solo", "multiple authors"), .keep = "unused")
+
+
+book_solo_yn
+
+
+```
+
+# Most well reviewed publisher? most books published by publisher
+
+```{r}
+
+top_publishers <- books_clean %>% 
+  group_by(publisher) %>% 
+  summarise(books_by_publisher = n(), 
+            publisher_average_reviews = round(mean(average_rating), 2)) %>% 
+  filter(books_by_publisher > 3) %>% 
+  #arrange(desc(publisher_average_reviews))
+  arrange(desc(books_by_publisher))
+  top_publishers
+
+
+
+  
+  
+
+```
+
+
+# Lets play about with number of reviews and year of publication
+
+```{r}
+books_clean %>% 
+  
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Do authors always go with the same publisher or do they move around publishers
+
+```{r}
+# 
+# books_clean %>% 
+#   group_by(authors, publisher) %>% 
+#   summarise(publisher_count = sum(n()))
+#   
+    # unique() %>%
+# group_by(authors) %>%
+# summarize(vis_count = n())
+  
+  #   select(authors, publisher) %>% 
+#   group_by(authors) %>% 
+# distinct()
+#   
+
+
 ```
 
