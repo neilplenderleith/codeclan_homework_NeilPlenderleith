@@ -1,0 +1,166 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Load Libraries and Data
+
+```{r}
+library(tidyverse)
+library(skimr)
+library(janitor)
+library(lubridate)
+library(anytime)
+books <- read.csv("books.csv")
+```
+
+# A first look and initial tests on books.csv
+
+```{r}
+#I used these 3 functions to get an initial idea of the dataset
+# glimpse(books)
+# summary(books)
+# skim(books)
+
+
+# Lets do a count of N/A and missing values etc
+
+books %>% 
+  summarise(across(.fns = ~ sum(is.na(.x)))) 
+# this counts N/A values across all columns
+
+books %>% 
+  summarise(across(.fns = ~ sum(is_empty(.x)))) 
+# this counts empty values in columns
+
+books %>% 
+  summarise(across(.fns = ~ sum(.x == "")))
+# This counts empty strings across all columns
+
+books %>% 
+  summarise(across(.fns = ~ sum(.x == 0, 
+                                na.rm = T)))
+#This counts any 0 values across all columns
+
+
+
+```
+
+### Text of first thoughts about the Data
+
+Looks like num_pages and avg_rating should be numeric rather than character.
+
+Column names look ok - all self-explanatory , all in snake_case and no capitals.
+
+There are only 8 N/A values in the whole dataset.
+
+Since its 11131 rows lets consider dropping the 8 N/A rows - turns out after
+a look that these are in 4 other wise useless rows - lets drop.
+
+There are quite a few 0 values in the data:
+num_pages has 76 "0" values - perhaps change these to the mean.
+ratings_count has 80 "0" values - this is fine as some books have no reviews.
+text_review_count also fine to have 0 values.
+publication date has 1 "0" value.
+
+### Clean data
+
+```{r}
+
+# here we drop NA's, clean out a couple of random rows
+# change numpages to integer from character
+# change average rating to numeric
+# impute into num_pages the mean of num_pages column for 0 values
+
+books_clean <- books %>% 
+  drop_na() %>% # Lets drop the 4 N/A rows
+  filter(!num_pages %in% c("eng", "en-US")) %>% 
+  mutate(num_pages = as.integer(num_pages),
+         average_rating = as.numeric(average_rating)) %>% 
+  mutate(num_pages = if_else(num_pages == 0, 
+                             as.integer(mean(num_pages)), 
+                             num_pages))
+
+
+
+books_clean %>%  # quick check to see "0"s have gone (changed to mean)
+summarise(across(.cols = num_pages, .fns = ~ sum(.x == 0, 
+                                na.rm = T)))
+
+
+```
+
+
+
+### Most prolific author - TOP 10
+
+```{r}
+
+books_clean %>% 
+  group_by(authors) %>% 
+  summarise(books_authored = n()) %>% 
+  slice_max(books_authored, n = 10)
+
+# Turns out it returns a top-13 as the 10th place is tied 4 ways
+# We will allow this but could change it with the "with_ties" argument
+
+```
+
+
+### TOP 10 authors by mean of average reviews, at least 10 books written
+
+For future reference this function line by line does:
+make 2 columns: number of books written per author
+                average author reviews from all of their books
+filters for those authors who have written 10 or more books
+takes the top 10 then selects the authors and their average reviews
+
+
+
+```{r}
+
+top_10_reviewed_authors <- books_clean %>% 
+  group_by(authors) %>% 
+  summarise(books_authored = n(), 
+         author_average_reviews = round(mean(average_rating), 2)) %>% 
+  filter(books_authored > 10) %>% 
+  slice_max(author_average_reviews, n = 10) %>% 
+  select(authors, author_average_reviews)
+  
+  top_10_reviewed_authors
+
+```
+
+### Which language used? Sort the 10 most popular languages and list by
+descending percentage
+
+```{r}
+
+languages_percent <- books_clean %>% 
+  count(language_code) %>% 
+  arrange(desc(n)) %>% 
+  mutate(percentage_language = round((n/sum(n))*100, 2)) %>% 
+  slice_max(percentage_language, n = 10) %>% 
+  select(language_code, percentage_language)
+
+languages_percent
+
+```
+
+### Best years for book writing by average review 
+
+anydate() and anytime() very useful functions for turning character dates into <date>
+from the epackage anytime
+
+```{r}
+
+books_date <- books_clean %>% 
+  mutate(pub_date = anydate(publication_date), year_written = year(pub_date)) %>% 
+  group_by(year_written) %>% 
+  summarise(rating_per_year = mean(average_rating), no_ratings_per_year = n()) %>% 
+  filter(no_ratings_per_year >= 5) %>% 
+  slice_max(rating_per_year, n = 10)
+
+books_date
+```
+
