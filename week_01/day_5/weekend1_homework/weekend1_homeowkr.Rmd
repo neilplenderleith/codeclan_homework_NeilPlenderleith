@@ -47,7 +47,7 @@ books %>%
 
 ```
 
-### Text of first thoughts about the Data
+# First thoughts about the Data
 
 Looks like num_pages and avg_rating should be numeric rather than character.
 
@@ -56,7 +56,7 @@ Column names look ok - all self-explanatory , all in snake_case and no capitals.
 There are only 8 N/A values in the whole dataset.
 
 Since its 11131 rows lets consider dropping the 8 N/A rows - turns out after
-a look that these are in 4 other wise useless rows - lets drop.
+a look that these are in 4 otherwise useless rows - lets drop.
 
 There are quite a few 0 values in the data:
 num_pages has 76 "0" values - perhaps change these to the mean.
@@ -64,7 +64,7 @@ ratings_count has 80 "0" values - this is fine as some books have no reviews.
 text_review_count also fine to have 0 values.
 publication date has 1 "0" value.
 
-### Clean data
+# Clean data
 
 ```{r}
 
@@ -88,12 +88,13 @@ books_clean %>%  # quick check to see "0"s have gone (changed to mean)
 summarise(across(.cols = num_pages, .fns = ~ sum(.x == 0, 
                                 na.rm = T)))
 
+# OK we can live with this data for the moment lets start somes tasks
 
 ```
 
 
 
-### Most prolific author - TOP 10
+# 1. Most Prolific Author - TOP 10
 
 ```{r}
 
@@ -108,12 +109,12 @@ books_clean %>%
 ```
 
 
-### TOP 10 authors by mean of average reviews, at least 10 books written
+# 2. TOP 10 authors by mean of their average reviews, at least 3 books written
 
-For future reference this function line by line does:
+For future reference this function:
 make 2 columns: number of books written per author
                 average author reviews from all of their books
-filters for those authors who have written 10 or more books
+filters for those authors who have written 3 or more books
 takes the top 10 then selects the authors and their average reviews
 
 
@@ -124,7 +125,7 @@ top_10_reviewed_authors <- books_clean %>%
   group_by(authors) %>% 
   summarise(books_authored = n(), 
          author_average_reviews = round(mean(average_rating), 2)) %>% 
-  filter(books_authored > 10) %>% 
+  filter(books_authored > 3) %>% 
   slice_max(author_average_reviews, n = 10) %>% 
   select(authors, author_average_reviews)
   
@@ -132,7 +133,7 @@ top_10_reviewed_authors <- books_clean %>%
 
 ```
 
-### Which language used? Sort the 10 most popular languages and list by
+# 3. Which language used? Sort the 10 most popular languages and list by
 descending percentage
 
 ```{r}
@@ -148,39 +149,49 @@ languages_percent
 
 ```
 
-### Best years for book writing by average review 
+# 4. Best years for book writing by average review 
 
 anydate() and anytime() very useful functions for turning character dates into <date>
-from the package anytime
+from the package "anytime"
+
+First we add columns which clean up the publisher date from a character to a <date>
+We pull the year from this value to another column 
+Then we summarise calculating average ratings per year published and
+number of ratings per year. We then filter for only those with more than 4 ratings per year
+and return the top 10 years.
+
 
 ```{r}
 
+
+
+
 books_date <- books_clean %>% 
-  mutate(pub_date = anydate(publication_date), year_written = year(pub_date)) %>% 
+  mutate(pub_date = anydate(publication_date), 
+         year_written = year(pub_date)) %>% 
   group_by(year_written) %>% 
   summarise(rating_per_year = round(mean(average_rating), 2), no_ratings_per_year = n()) %>% 
   filter(no_ratings_per_year >= 4) %>% 
   slice_max(rating_per_year, n = 10)
   books_date
   
+  # I had to have a wee look at this on a v simple graph 
   # ungroup()
   #  ggplot(books_date, aes(x = year_written, y = rating_per_year)) +
   #   geom_point() + 
   #   geom_smooth()
   
-  
-  
- 
-
 ```
 
-# Multiple Authors
+# 5. Multiple Authors
 
 How many books are authored by multiple authors? Looking at the data multiple authors are separated by "/" character so if we check for that in each author and count it should give us the data.
 
 Here we use the base R function grepl which tests if a string is contained in a vector and returns T/F
 
 ```{r}
+# Summarise by authors containing a "/" symbol (these should be multi-authored)
+# then count each side and do some tidying up
 
 book_solo_yn <- books_clean %>% 
   summarise(multi_author = grepl("/", books_clean$authors, fixed = T)) %>% 
@@ -193,9 +204,35 @@ book_solo_yn
 
 ```
 
-# Most well reviewed publisher? most books published by publisher
+# 6. More multiple authors
+
+I'm not overly happy with #5 above. Lets redo it and check to see if average rating 
+of multi authored books is higher or lower than solo authors on average.
 
 ```{r}
+avg_rating_solo <- books_clean %>% 
+  mutate(solo_author = grepl("/", books_clean$authors, fixed = T)) %>% 
+  filter(solo_author == F) %>% 
+  summarise(avg_rating_solo = mean(average_rating), count = n())
+avg_rating_solo
+
+avg_rating_multi <- books_clean %>% 
+  mutate(solo_author = grepl("/", books_clean$authors, fixed = T)) %>% 
+  filter(solo_author == T) %>% 
+  summarise(avg_rating_multi = mean(average_rating), count = n())
+avg_rating_multi
+
+# 6561 solo written books, 4562 multiple authored books
+# multi authored books win 3.96 to 3.91 though theres not much in it
+```
+
+
+# 7. Most well reviewed publisher? most books published by publisher
+
+```{r}
+
+# counts books by publisher, assigns an average review for each publisher
+# then filters for books > 3 and arranges by number of books or avg review
 
 top_publishers <- books_clean %>% 
   group_by(publisher) %>% 
@@ -206,29 +243,29 @@ top_publishers <- books_clean %>%
   arrange(desc(books_by_publisher))
   top_publishers
 
-
-
-  
-  
-
 ```
 
 
-# Lets play about with number of reviews and year of publication
+# 8. How about a random specific query. 
+
+Like find the most text-reviewed books in the 90's by the publisher Vintage?
 
 ```{r}
-books_clean %>% 
-  
 
+books_clean %>% 
+  mutate(pub_date = anydate(publication_date), 
+         year_written = year(pub_date)) %>% 
+  filter(year_written >= 1990 &
+         year_written <2000 &
+           publisher == "Vintage") %>% 
+  select(title, text_reviews_count) %>% 
+  slice_max(text_reviews_count, n = 20)
+  
 
 ```
 
 
-
-
-
-
-
+# 9.
 
 
 

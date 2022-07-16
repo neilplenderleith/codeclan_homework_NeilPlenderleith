@@ -1853,23 +1853,24 @@ books %&gt;%
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<div id="text-of-first-thoughts-about-the-data" class="section level3">
-<h3>Text of first thoughts about the Data</h3>
+</div>
+<div id="first-thoughts-about-the-data" class="section level1">
+<h1>First thoughts about the Data</h1>
 <p>Looks like num_pages and avg_rating should be numeric rather than
 character.</p>
 <p>Column names look ok - all self-explanatory , all in snake_case and
 no capitals.</p>
 <p>There are only 8 N/A values in the whole dataset.</p>
 <p>Since its 11131 rows lets consider dropping the 8 N/A rows - turns
-out after a look that these are in 4 other wise useless rows - lets
+out after a look that these are in 4 otherwise useless rows - lets
 drop.</p>
 <p>There are quite a few 0 values in the data: num_pages has 76 “0”
 values - perhaps change these to the mean. ratings_count has 80 “0”
 values - this is fine as some books have no reviews. text_review_count
 also fine to have 0 values. publication date has 1 “0” value.</p>
 </div>
-<div id="clean-data" class="section level3">
-<h3>Clean data</h3>
+<div id="clean-data" class="section level1">
+<h1>Clean data</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIGhlcmUgd2UgZHJvcCBOQSdzLCBjbGVhbiBvdXQgYSBjb3VwbGUgb2YgcmFuZG9tIHJvd3NcbiMgY2hhbmdlIG51bXBhZ2VzIHRvIGludGVnZXIgZnJvbSBjaGFyYWN0ZXJcbiMgY2hhbmdlIGF2ZXJhZ2UgcmF0aW5nIHRvIG51bWVyaWNcbiMgaW1wdXRlIGludG8gbnVtX3BhZ2VzIHRoZSBtZWFuIG9mIG51bV9wYWdlcyBjb2x1bW4gZm9yIDAgdmFsdWVzXG5cbmJvb2tzX2NsZWFuIDwtIGJvb2tzICU+JSBcbiAgZHJvcF9uYSgpICU+JSAjIExldHMgZHJvcCB0aGUgNCBOL0Egcm93c1xuICBmaWx0ZXIoIW51bV9wYWdlcyAlaW4lIGMoXCJlbmdcIiwgXCJlbi1VU1wiKSkgJT4lIFxuICBtdXRhdGUobnVtX3BhZ2VzID0gYXMuaW50ZWdlcihudW1fcGFnZXMpLFxuICAgICAgICAgYXZlcmFnZV9yYXRpbmcgPSBhcy5udW1lcmljKGF2ZXJhZ2VfcmF0aW5nKSkgJT4lIFxuICBtdXRhdGUobnVtX3BhZ2VzID0gaWZfZWxzZShudW1fcGFnZXMgPT0gMCwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFzLmludGVnZXIobWVhbihudW1fcGFnZXMpKSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIG51bV9wYWdlcykpXG5cblxuXG5ib29rc19jbGVhbiAlPiUgICMgcXVpY2sgY2hlY2sgdG8gc2VlIFwiMFwicyBoYXZlIGdvbmUgKGNoYW5nZWQgdG8gbWVhbilcbnN1bW1hcmlzZShhY3Jvc3MoLmNvbHMgPSBudW1fcGFnZXMsIC5mbnMgPSB+IHN1bSgueCA9PSAwLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmEucm0gPSBUKSkpXG5gYGAifQ== -->
@@ -1908,26 +1909,17 @@ NA</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="most-prolific-author---top-10" class="section level3">
-<h3>Most prolific author - TOP 10</h3>
+<div id="most-prolific-author---top-10" class="section level1">
+<h1>1. Most Prolific Author - TOP 10</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KGF1dGhvcnMpICU+JSBcbiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpKSAlPiUgXG4gIHNsaWNlX21heChib29rc19hdXRob3JlZCwgbiA9IDEwKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KGF1dGhvcnMpICU+JSBcbiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpKSAlPiUgXG4gIHNsaWNlX21heChib29rc19hdXRob3JlZCwgbiA9IDEwKVxuXG4jIFR1cm5zIG91dCBpdCByZXR1cm5zIGEgdG9wLTEzIGFzIHRoZSAxMHRoIHBsYWNlIGlzIHRpZWQgNCB3YXlzXG4jIFdlIHdpbGwgYWxsb3cgdGhpcyBidXQgY291bGQgY2hhbmdlIGl0IHdpdGggdGhlIFwid2l0aF90aWVzXCIgYXJndW1lbnRcblxuYGBgIn0= -->
 <pre class="r"><code>
 books_clean %&gt;% 
   group_by(authors) %&gt;% 
   summarise(books_authored = n()) %&gt;% 
-  slice_max(books_authored, n = 10)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTMsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMTMgw5cgMiJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMlN6MC9iTUJUSDNVQ0dxQ2hGNHJBRDIyUzB3M1pwZHRnT3V6SVFRd08wQ2pyQmJYbzRYbU1sdGF2bkY0M2UrSis1MHoyM05ocUo5RTFlUG40L2JWK2QzSDd1My9hRkVCdGlNK3VKalp4TmtmK2FuSTYrQ2liODB4T2JZanQ4NzlscG40MEE5MWlEdUxBN0xyNFg4c2FWdW5LdDE1SHVYSk9lVjlyS2MyT25rZTFkdFROVE96bUJHaXJ3bFVuOEozcG41YlZ5UlBJWXNJeDhlRFFGcWtBZVYyZzhtWlI2TURZYXZUeXlWRG03U0w2WEdwVXV0WmNYb0dxOWVHNERiSWtndjZIN2F4TTdNYXFXcHdoV0daL0NmOENNWThkQXBFTXpFZTlmUUl1NmFlUjVJYzlnWmhwNlhqcTRCSndDYXBJMzJ2aFBFd1Mxa0dlY2VRYkpaVGpSaUFzNVJpQlZhYUxWcHEzMU1lb0Q2ejNya1BXTzlUYnFEZXYxUzcwNGpkeUdmdU5KWkJGdVFjdGJnbW1tM1R2bmF2OTdEWFhaeWJETk8xS2tMS0dsN0lGZnkrWHlzVnRLTmVCVHFRVDdKUkFVZjVEaitlK3BFN0xsNW1TYzVhQXMzSmk4RTl6RERoaTJOblJTamxUVjJucjBKUlJZTGErZlFiUUgvOW5adW1TMmpLbnltT3FWdGxOajAxWEpHN2pUVGRxUGNBZkN3TVVjamFVMENWTmZrQ05JZm4zbG1rUldzNG1uZjd0UEwxWW9Bd0FBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["authors"],"name":[1],"type":["chr"],"align":["left"]},{"label":["books_authored"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"P.G. Wodehouse","2":"40"},{"1":"Stephen King","2":"40"},{"1":"Rumiko Takahashi","2":"39"},{"1":"Orson Scott Card","2":"35"},{"1":"Agatha Christie","2":"33"},{"1":"Piers Anthony","2":"30"},{"1":"Mercedes Lackey","2":"29"},{"1":"Sandra Brown","2":"29"},{"1":"Dick Francis","2":"28"},{"1":"James Patterson","2":"23"},{"1":"Laurell K. Hamilton","2":"23"},{"1":"Margaret Weis/Tracy Hickman","2":"23"},{"1":"Terry Pratchett","2":"23"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[13]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIFR1cm5zIG91dCBpdCByZXR1cm5zIGEgdG9wLTEzIGFzIHRoZSAxMHRoIHBsYWNlIGlzIHRpZWQgNCB3YXlzXG4jIFdlIHdpbGwgYWxsb3cgdGhpcyBidXQgY291bGQgY2hhbmdlIGl0IHdpdGggdGhlIFwid2l0aF90aWVzXCIgYXJndW1lbnRcblxuYGBgIn0= -->
-<pre class="r"><code>
+  slice_max(books_authored, n = 10)
+
 # Turns out it returns a top-13 as the 10th place is tied 4 ways
 # We will allow this but could change it with the &quot;with_ties&quot; argument
 </code></pre>
@@ -1935,43 +1927,34 @@ books_clean %&gt;%
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="top-10-authors-by-mean-of-average-reviews-at-least-10-books-written" class="section level3">
-<h3>TOP 10 authors by mean of average reviews, at least 10 books
-written</h3>
-<p>For future reference this function line by line does: make 2 columns:
-number of books written per author average author reviews from all of
-their books filters for those authors who have written 10 or more books
-takes the top 10 then selects the authors and their average reviews</p>
+<div id="top-10-authors-by-mean-of-their-average-reviews-at-least-3-books-written" class="section level1">
+<h1>2. TOP 10 authors by mean of their average reviews, at least 3 books
+written</h1>
+<p>For future reference this function: make 2 columns: number of books
+written per author average author reviews from all of their books
+filters for those authors who have written 3 or more books takes the top
+10 then selects the authors and their average reviews</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50b3BfMTBfcmV2aWV3ZWRfYXV0aG9ycyA8LSBib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KGF1dGhvcnMpICU+JSBcbiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpLCBcbiAgICAgICAgIGF1dGhvcl9hdmVyYWdlX3Jldmlld3MgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMikpICU+JSBcbiAgZmlsdGVyKGJvb2tzX2F1dGhvcmVkID4gMTApICU+JSBcbiAgc2xpY2VfbWF4KGF1dGhvcl9hdmVyYWdlX3Jldmlld3MsIG4gPSAxMCkgJT4lIFxuICBzZWxlY3QoYXV0aG9ycywgYXV0aG9yX2F2ZXJhZ2VfcmV2aWV3cylcbiAgXG4gIHRvcF8xMF9yZXZpZXdlZF9hdXRob3JzXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50b3BfMTBfcmV2aWV3ZWRfYXV0aG9ycyA8LSBib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KGF1dGhvcnMpICU+JSBcbiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpLCBcbiAgICAgICAgIGF1dGhvcl9hdmVyYWdlX3Jldmlld3MgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMikpICU+JSBcbiAgZmlsdGVyKGJvb2tzX2F1dGhvcmVkID4gMykgJT4lIFxuICBzbGljZV9tYXgoYXV0aG9yX2F2ZXJhZ2VfcmV2aWV3cywgbiA9IDEwKSAlPiUgXG4gIHNlbGVjdChhdXRob3JzLCBhdXRob3JfYXZlcmFnZV9yZXZpZXdzKVxuICBcbiAgdG9wXzEwX3Jldmlld2VkX2F1dGhvcnNcblxuYGBgIn0= -->
 <pre class="r"><code>
 top_10_reviewed_authors &lt;- books_clean %&gt;% 
   group_by(authors) %&gt;% 
   summarise(books_authored = n(), 
          author_average_reviews = round(mean(average_rating), 2)) %&gt;% 
-  filter(books_authored &gt; 10) %&gt;% 
+  filter(books_authored &gt; 3) %&gt;% 
   slice_max(author_average_reviews, n = 10) %&gt;% 
   select(authors, author_average_reviews)
   
-  top_10_reviewed_authors</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTEsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMTEgw5cgMiJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVNNVThiTVJSMkRxNG9sd1lTcU5oYWVXdVh1RU5WcVF2U0JhR0NnbERES1JVTWxkRGo0dWFzdTlpcHp5YW9VNWZPekxCMloyYUdIOUc1Yzd1eWt0cUpUYXZ6NmV6M1ByL3ZmWDUrVG5hTzMwVEhFVUpvQ1MwSE5iUVVHaE9GSHdmdk8rK1FRWXhUUTh1b2J0ZHpFN1JoREF1MnpOOXdHOC8zbUJSampic1NjcGpDNjI3T0pPQWpVTURobExxZ3B6MnlUM0FpcGdYakk0ZXQ5a2hpUGp3UVJjNG9kK2hhSDVSa2FZNC92TnlXRER4Y0h6QkY4YjQrRlo1dFpUT1dpN2t3YzJoelIraFJBU1h1RG1GY09yRFJBMDV4VjVmcVVhV1Y2TEhsRHN5Wk15Z3o5aGdxTW80UDBuNUcvZEZYKzJTWDRDTXhwSm5RSmJXSURZelhkNitmZmYyMUY2OUhXNU1mUDZPNGZXbkhWZHkyM3RhWHVIMzQrL3VMbXlSdXUvMldkUS8vL0Z0dkx6Njl1citMVzQ3bjFzcTFoeHpHdEhSWEhqaHdCYlRLaFBUMWJTN2NFemlqRWtiMFJOSXpScWRsSlZOZGlpbngyWm8yMnpjenpXYXorNnBrYWk3UVMzb3dHcHFHa3MvUzhJMzNVS0dzaUlsaWdodFNZSjlJV0NIWFpBVlkwOXllWk5oSk04M3p6bHNyTU45ZWpLYXpHLy9ad1VJeW1MbFVvVXYxaFBJUjQ3NVpZV0hlWE9FN1p5cWVGMHdta25IbEt6Rm9TWlJRNE9PaVZCUWVtZGVHSHY0Q0U3eEJNUmtEQUFBPSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["authors"],"name":[1],"type":["chr"],"align":["left"]},{"label":["author_average_reviews"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Hiromu Arakawa/Akira Watanabe","2":"4.57"},{"1":"J.K. Rowling","2":"4.51"},{"1":"J.R.R. Tolkien","2":"4.40"},{"1":"Patrick O'Brian","2":"4.36"},{"1":"Tite Kubo","2":"4.33"},{"1":"Hirohiko Araki","2":"4.26"},{"1":"Douglas Adams","2":"4.23"},{"1":"Jane Austen","2":"4.23"},{"1":"Rumiko Takahashi","2":"4.19"},{"1":"John McPhee","2":"4.15"},{"1":"P.G. Wodehouse","2":"4.15"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[11]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+  top_10_reviewed_authors
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="which-language-used-sort-the-10-most-popular-languages-and-list-by" class="section level3">
-<h3>Which language used? Sort the 10 most popular languages and list
-by</h3>
+<div id="which-language-used-sort-the-10-most-popular-languages-and-list-by" class="section level1">
+<h1>3. Which language used? Sort the 10 most popular languages and list
+by</h1>
 <p>descending percentage</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -1999,47 +1982,43 @@ languages_percent</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="best-years-for-book-writing-by-average-review" class="section level3">
-<h3>Best years for book writing by average review</h3>
+<div id="best-years-for-book-writing-by-average-review" class="section level1">
+<h1>4. Best years for book writing by average review</h1>
 <p>anydate() and anytime() very useful functions for turning character
-dates into <date> from the package anytime</p>
+dates into <date> from the package “anytime”</p>
+<p>First we add columns which clean up the publisher date from a
+character to a <date> We pull the year from this value to another column
+Then we summarise calculating average ratings per year published and
+number of ratings per year. We then filter for only those with more than
+4 ratings per year and return the top 10 years.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ib29rc19kYXRlIDwtIGJvb2tzX2NsZWFuICU+JSBcbiAgbXV0YXRlKHB1Yl9kYXRlID0gYW55ZGF0ZShwdWJsaWNhdGlvbl9kYXRlKSwgeWVhcl93cml0dGVuID0geWVhcihwdWJfZGF0ZSkpICU+JSBcbiAgZ3JvdXBfYnkoeWVhcl93cml0dGVuKSAlPiUgXG4gIHN1bW1hcmlzZShyYXRpbmdfcGVyX3llYXIgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMiksIG5vX3JhdGluZ3NfcGVyX3llYXIgPSBuKCkpICU+JSBcbiAgZmlsdGVyKG5vX3JhdGluZ3NfcGVyX3llYXIgPj0gNCkgJT4lIFxuICBzbGljZV9tYXgocmF0aW5nX3Blcl95ZWFyLCBuID0gMTApXG4gIGJvb2tzX2RhdGVcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cblxuXG5ib29rc19kYXRlIDwtIGJvb2tzX2NsZWFuICU+JSBcbiAgbXV0YXRlKHB1Yl9kYXRlID0gYW55ZGF0ZShwdWJsaWNhdGlvbl9kYXRlKSwgXG4gICAgICAgICB5ZWFyX3dyaXR0ZW4gPSB5ZWFyKHB1Yl9kYXRlKSkgJT4lIFxuICBncm91cF9ieSh5ZWFyX3dyaXR0ZW4pICU+JSBcbiAgc3VtbWFyaXNlKHJhdGluZ19wZXJfeWVhciA9IHJvdW5kKG1lYW4oYXZlcmFnZV9yYXRpbmcpLCAyKSwgbm9fcmF0aW5nc19wZXJfeWVhciA9IG4oKSkgJT4lIFxuICBmaWx0ZXIobm9fcmF0aW5nc19wZXJfeWVhciA+PSA0KSAlPiUgXG4gIHNsaWNlX21heChyYXRpbmdfcGVyX3llYXIsIG4gPSAxMClcbiAgYm9va3NfZGF0ZVxuICBcbiAgIyBJIGhhZCB0byBoYXZlIGEgd2VlIGxvb2sgYXQgdGhpcyBvbiBhIHYgc2ltcGxlIGdyYXBoIFxuICAjIHVuZ3JvdXAoKVxuICAjICBnZ3Bsb3QoYm9va3NfZGF0ZSwgYWVzKHggPSB5ZWFyX3dyaXR0ZW4sIHkgPSByYXRpbmdfcGVyX3llYXIpKSArXG4gICMgICBnZW9tX3BvaW50KCkgKyBcbiAgIyAgIGdlb21fc21vb3RoKClcbiAgXG5gYGAifQ== -->
 <pre class="r"><code>
+
+
+
 books_date &lt;- books_clean %&gt;% 
-  mutate(pub_date = anydate(publication_date), year_written = year(pub_date)) %&gt;% 
+  mutate(pub_date = anydate(publication_date), 
+         year_written = year(pub_date)) %&gt;% 
   group_by(year_written) %&gt;% 
   summarise(rating_per_year = round(mean(average_rating), 2), no_ratings_per_year = n()) %&gt;% 
   filter(no_ratings_per_year &gt;= 4) %&gt;% 
   slice_max(rating_per_year, n = 10)
-  books_date</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTEsIm5jb2wiOjMsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMTEgw5cgMyJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJtVlFQVS9ETUJCMWt3YlU5Q3RTR1pqS3l0SXNIV0RNZ0lDVkNxUU9TSkZwVFlrSVR1VzRhbUZpWVVQcVB5Z0xJMkx1akJqNUFRd3N6TXhkRzg3SldTM0Iwdm41M3IzN2N1ZWcyN2E3TmlIRUpFV2pRRXdMbnNRNk96MXM3Uk5nd0NtUUlpa3BuSUNva1NvSnFZR1Z2ZG1qVWhOdjlvdzR6L0JKb3YrTytJSDRpZmlGK0lMNmJjUUp3WlBWZDZibnU0dTNxZWVjL0R3MDV4M1BPWHJkdXZzK1htRTdQWjdUbklOaTV6K0NDcVI1aE5wVlZSK3NxTFpGckNPbnJBTG1nS25GUnhuKytReUwweHNXbzhoRXNuTExxUERISXBDU2NlVHFnc3FBRC93aEU3NEtJOTNna1o5RjRsWG9iNHVTaU1hdWJxUG1OZTdoU3BKa2taK2xGOUpZejZKSnUwOGxkUzhGNUlPM3pLVnNSa01aUkJ5U2pBYit3SHB5UWVTSStvaXJTZnF0M3RXSVg3ZjJWSU0wbkowcXZzdHJiek5yYVNSWXlzSlNHNHdQQXM3MDdDRzlZQ0U2TmRnNFhkZ2Rpb0JMdlFtd3NTc2pTYlhPN2tXaFp0TGR5UElYa1V1NFpzZ0NBQUE9In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year_written"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["rating_per_year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["no_ratings_per_year"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1955","2":"4.14","3":"4"},{"1":"1961","2":"4.08","3":"5"},{"1":"1966","2":"4.07","3":"4"},{"1":"2013","2":"4.07","3":"15"},{"1":"1969","2":"4.05","3":"11"},{"1":"1971","2":"4.03","3":"11"},{"1":"1974","2":"4.03","3":"12"},{"1":"1975","2":"4.03","3":"16"},{"1":"1963","2":"4.02","3":"9"},{"1":"1990","2":"4.02","3":"117"},{"1":"2014","2":"4.02","3":"9"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[11]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbiAgIyB1bmdyb3VwKClcbiAgIyAgZ2dwbG90KGJvb2tzX2RhdGUsIGFlcyh4ID0geWVhcl93cml0dGVuLCB5ID0gcmF0aW5nX3Blcl95ZWFyKSkgK1xuICAjICAgZ2VvbV9wb2ludCgpICsgXG4gICMgICBnZW9tX3Ntb290aCgpXG4gIFxuICBcbiAgXG4gXG5cbmBgYCJ9 -->
-<pre class="r"><code>  
+  books_date
+  
+  # I had to have a wee look at this on a v simple graph 
   # ungroup()
   #  ggplot(books_date, aes(x = year_written, y = rating_per_year)) +
   #   geom_point() + 
   #   geom_smooth()
-  
-  
-  
- 
-</code></pre>
+  </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-</div>
 <div id="multiple-authors" class="section level1">
-<h1>Multiple Authors</h1>
+<h1>5. Multiple Authors</h1>
 <p>How many books are authored by multiple authors? Looking at the data
 multiple authors are separated by “/” character so if we check for that
 in each author and count it should give us the data.</p>
@@ -2071,20 +2050,65 @@ NA</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="most-well-reviewed-publisher-most-books-published-by-publisher" class="section level1">
-<h1>Most well reviewed publisher? most books published by publisher</h1>
+<div id="more-multiple-authors" class="section level1">
+<h1>6. More multiple authors</h1>
+<p>I’m not overly happy with #5 above. Lets redo it and check to see if
+average rating of multi authored books is higher or lower than solo
+authors on average.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50b3BfMTBfcHVibGlzaGVycyA8LSBib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KHB1Ymxpc2hlcikgJT4lIFxuICBzdW1tYXJpc2UoYm9va3NfYnlfcHVibGlzaGVyID0gbigpLCBcbiAgICAgICAgIHB1Ymxpc2hlcl9hdmVyYWdlX3Jldmlld3MgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMikpICU+JSBcbiAgZmlsdGVyKGJvb2tzX2J5X3B1Ymxpc2hlciA+IDMpICU+JSBcbiAgI2FycmFuZ2UoZGVzYyhwdWJsaXNoZXJfYXZlcmFnZV9yZXZpZXdzKSlcbiAgYXJyYW5nZShkZXNjKGJvb2tzX2J5X3B1Ymxpc2hlcikpXG4gIHRvcF8xMF9wdWJsaXNoZXJzXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXZnX3JhdGluZ19zb2xvIDwtIGJvb2tzX2NsZWFuICU+JSBcbiAgbXV0YXRlKHNvbG9fYXV0aG9yID0gZ3JlcGwoXCIvXCIsIGJvb2tzX2NsZWFuJGF1dGhvcnMsIGZpeGVkID0gVCkpICU+JSBcbiAgZmlsdGVyKHNvbG9fYXV0aG9yID09IEYpICU+JSBcbiAgc3VtbWFyaXNlKGF2Z19yYXRpbmdfc29sbyA9IG1lYW4oYXZlcmFnZV9yYXRpbmcpLCBjb3VudCA9IG4oKSlcbmF2Z19yYXRpbmdfc29sb1xuYGBgIn0= -->
+<pre class="r"><code>avg_rating_solo &lt;- books_clean %&gt;% 
+  mutate(solo_author = grepl(&quot;/&quot;, books_clean$authors, fixed = T)) %&gt;% 
+  filter(solo_author == F) %&gt;% 
+  summarise(avg_rating_solo = mean(average_rating), count = n())
+avg_rating_solo</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMSDDlyAyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFRVzdDTUJEY09MaFZJcFVnOWRSSEpCTHFwY2NlcXA0NFZTQnhRMHRJUTFUWFJvNERmS2R2NFFGY2VBK3dEbllsZklnOE85cVoyY25YeC93MW5hY0FFTU9BUlJCemdzQm4wOC84RFlpaElZSUJKUGJkMDlJekFVc09MZkdlVFE3c2hFZkNULzBpdlB3RklpN3h0Mm9KakhyaGpjeHdXeTgwbWtiV2kxWUo1WGRMMVVrVEdDUmE3UXB2NGxMc2Q1OVNDbXg5aWlmVEZSb3N2alZwYVRvSGtrZTFNWTJTSkdLMkV3L0VrUTZJckpQMmlsVmVyanY1azQ5dGdMc0c3aS83eCt3V3lTN09panVyaDByV2phejg3UUtYbFhERGtOcjJaWXVOYnVoZnVDYkV0b1ZSQnYxZVdpcmhtYjRibksvQnlqczN5Z0VBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["avg_rating_solo"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"3.912481","2":"6561"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5hdmdfcmF0aW5nX211bHRpIDwtIGJvb2tzX2NsZWFuICU+JSBcbiAgbXV0YXRlKHNvbG9fYXV0aG9yID0gZ3JlcGwoXCIvXCIsIGJvb2tzX2NsZWFuJGF1dGhvcnMsIGZpeGVkID0gVCkpICU+JSBcbiAgZmlsdGVyKHNvbG9fYXV0aG9yID09IFQpICU+JSBcbiAgc3VtbWFyaXNlKGF2Z19yYXRpbmdfbXVsdGkgPSBtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgY291bnQgPSBuKCkpXG5hdmdfcmF0aW5nX211bHRpXG5gYGAifQ== -->
 <pre class="r"><code>
-top_10_publishers &lt;- books_clean %&gt;% 
+avg_rating_multi &lt;- books_clean %&gt;% 
+  mutate(solo_author = grepl(&quot;/&quot;, books_clean$authors, fixed = T)) %&gt;% 
+  filter(solo_author == T) %&gt;% 
+  summarise(avg_rating_multi = mean(average_rating), count = n())
+avg_rating_multi</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Miwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbMSDDlyAyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFRVzdDTUJEY2hMaUlTRUFxM3BGSWlBdEhEb2dEeDZxVnVFVnVDTUhDMk1oeGdKZjBMWDFIWDlDSFZNQTZzU3ZoUStUWjBjN01UdDZXbTFtOGlRR2dCMUVZUUk4Z0JQTHh2a3JuZ0F3T0FVUXdNTzhWbHlZSUREa3l4R0w4L2ZVYnJQOFFEOXRGZVAzeFJFVFFZMWtqU0ZwaFJ5YjBYT1dLYWlhcS9OaHd6ZHh5SVJ1aFBZZUJrcGZNdWRnWTh6M0hGSnpXTHNhUjhaWnFtdTBVYW5HNmVaSytQR2ttQllwQ1U0cDQ0a0I1eExnUjVvcHRXdXdiY1VpbkpzQmVBOCtYL2VPd2l3enYxb3BZcTVkU1ZFeVU3blpPUDB0dWh4RzJiY3RtSjhYd1g5Z215TmFabHBxNnZiaVEzREZ0TjdnOUFMMWdDSWJMQVFBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["avg_rating_multi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["count"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"3.965132","2":"4562"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jIDY1NjEgc29sbyB3cml0dGVuIGJvb2tzLCBcbiMgbXVsdGkgYXV0aG9yZWQgYm9va3Mgd2luIDMuOTYgdG8gMy45MSB0aG91Z2ggdGhlcmVzIG5vdCBtdWNoIGluIGl0XG5gYGAifQ== -->
+<pre class="r"><code>
+# 6561 solo written books, 
+# multi authored books win 3.96 to 3.91 though theres not much in it</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="most-well-reviewed-publisher-most-books-published-by-publisher" class="section level1">
+<h1>7. Most well reviewed publisher? most books published by
+publisher</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG50b3BfcHVibGlzaGVycyA8LSBib29rc19jbGVhbiAlPiUgXG4gIGdyb3VwX2J5KHB1Ymxpc2hlcikgJT4lIFxuICBzdW1tYXJpc2UoYm9va3NfYnlfcHVibGlzaGVyID0gbigpLCBcbiAgICAgICAgICAgIHB1Ymxpc2hlcl9hdmVyYWdlX3Jldmlld3MgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMikpICU+JSBcbiAgZmlsdGVyKGJvb2tzX2J5X3B1Ymxpc2hlciA+IDMpICU+JSBcbiAgI2FycmFuZ2UoZGVzYyhwdWJsaXNoZXJfYXZlcmFnZV9yZXZpZXdzKSlcbiAgYXJyYW5nZShkZXNjKGJvb2tzX2J5X3B1Ymxpc2hlcikpXG4gIHRvcF9wdWJsaXNoZXJzXG5gYGAifQ== -->
+<pre class="r"><code>
+top_publishers &lt;- books_clean %&gt;% 
   group_by(publisher) %&gt;% 
   summarise(books_by_publisher = n(), 
-         publisher_average_reviews = round(mean(average_rating), 2)) %&gt;% 
+            publisher_average_reviews = round(mean(average_rating), 2)) %&gt;% 
   filter(books_by_publisher &gt; 3) %&gt;% 
   #arrange(desc(publisher_average_reviews))
   arrange(desc(books_by_publisher))
-  top_10_publishers</code></pre>
+  top_publishers</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NTE0LCJuY29sIjozLCJzdW1tYXJ5Ijp7IkEgdGliYmxlIjpbIjUxNCDDlyAzIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQnUxY1Myd2t4M25tUHZnYWNoNGtkNWZjaDFhdDJOcGRKVmtxaVhKd0FpamdQSmFQNVd2TTRTNjFnZ0doT0ZPY2FiQ25hOVFQY3JtNUdCS2NISHh3VGdFY0k4Z2hRaEpEamhQREZ3VUljc2hlazdQUHpzS3hqT1RxM0dMbHIrNzZxcnRxT0pJREp3S01aS0hTN05SMFYvMzFQNzcvKy85dWFhL3gxaHVGdHdwalkyT1h4aTVmdkRCMmFaeitPamIrYUgvMS9wZkdhSWErWEJpN1BEWXRQNS9TUlF2SmxXTmpsYkd4aXhmVkQ1T1BYVDlpWGE2K0ZwdmM3OGF1NzlTRU9BN1ZaQVdUZFkrRm9kdkdmSEdiQmE3UEEvUGlHdk04NWtmMGd6bS96b0lCWGR2a0FmZDlsM2xZSkoydkM4OXpmVnc4MnhUdFl4NFpDMHpVYUZYV3gyMlBOOTUydG5uSFpjN1dWaDJIcWZIZzJPTm42dXQ4UTV6SUhlTkR6MjJ6eUJWNi9kSzI2UERBZDdiY3c0QUZ1SDZ5d1QxblQ5Kyt0Qll3ditQVXVSOEZ6RXVYQ1h1dTMxVy9UKzhMOCtpM2RwOGVpYURqUFBKZDJqZDBvek9uR2ZBd2RKeEhyYXE2Wm5IRU5lcm5xVlk3Y0E5SnArcjcxWU5saC83WkVVRWtmTWVwaS82QStSRHdScDMxRHdPMzArV2pscHRvdVYyZlIrcGJ1ZVgyNVNxdGRpOE9JNzNIUk5Wdjl3UytUU3BqcTYvWEQxd3lET3M3MnlJSXhLblRaR1NzUTliV2g3NWNQUkc0K0NxdExNaEhJcmM5Zk9HOFVyWWpqcHhxbndka0VtM3QrT2pJOHJsU0xSQ3NjOHJPak5uWjFBZU11U1hEZ1dBbVVvYjZmU2I5bll6VjdrRVJORVdDN0N3N1ZSS3ByMTAwMWM4ZFcwSHpyV2paSVY4bm43NGJHdnFkcVRHS0IwT2NvdkpCWS9LS3NjSmE0TXJ6cXQrdUdTYStZOW40WnM2eXBMaDZqOVRXRllZUWs0ODVMZHdWNnV1bFJ2VUF4bHVsYzdLQUxFNGVISWVPZE9jMU54RHhVK2d6TmIybGVUS2FVN00wUDcrMjNGd201VVkrNjlNUldsa3NUYVQ2MWU1REFuYTBOODNXUFRwclNLZUx1RjdxQVIzb3JNK2tLc3dBbkZrTEtHS053MTFmRjNHM0p6V3pUUXVSaFIzYXJpM2lBRTc5eFQwNmxlZzdkRjJvRU1laENIT2VpTmp2VWpTelR1WUswbFZPMk9qb1d6UU5iWHZ3NGdGTDRsOUswM28zWm9FcDZualRpL3NBMGt2Vk52NDZuU3BvMTljZ3EzREdVUENOSm1GcG04dTFSMGczYjV5MEduZGNtSHg2VDhTUnh6c2F4Z3RaSU1MTGFpendPVUhSampqMHVJM2s1YXAzRlBDT1UxMTJObjB4T01LNmpicDB4K3c2VXI3RTVTZ0hodkJYeDludzI4dncydlh0OWMrd3hUZ3BJUUlDekJscHg5bUtPdkNmL0prUlRBZnVNekppS09NaDZ0RlpCQjBVcTFZbFNrRUxxd0UzVFRTanZETUh5Q1VUNElERFR6Z0x2QXpySFR0N09TcUQySXJjazZicjBVbk41TGRQRHV2eHd5U3ljdk8zcmVobUZDMGlvUFVOcVMrVHFwQXVadytrSGMySXZmcUVlU05Ud0RRNW9uSDFURFVLYUFNRHM3YTRHOGFCZWQzMUxUY2ltUjJIa1BqVVQ3RERoS2FYREgvY0Q4aTZ3ekZUVGpPUXJhZUtvaDFEODNWYTArT25MaWtxZjRvU09WNlBITThVY2JJMTRHMkNOb1QzL3BuZmthcElKUnJLQk9Oa2FwM2RLN1VnTVR6Rm5CRkx4UVlqT3d4TWlIM1YxTVduZS9ZRUljZ0poOEV1N1ZTM2NJZ2RmdW8wM0lCa3puR1JJbTFFZEluRVdHZmF6Qk5wU3NRbCt6M1JaNFNpM0F0MXNwM0xlNEp6YitmSmEzQjdtWkZOUGEyeVU0S1dLRk5tNHN5UHhSbVpBRkE5SStuTXFzeXZJWFJVMkJkeHV4Y1NKbWtzZSt3K1Mya1hscTU2ck5QUmtpN1VQQ0g2NFdGTTZiVktvY2I3R29FdVAyaTNvZVJabFpNRE1laHBnOWhJai9zZVVrNUFXTzZMNHpQUkZBTll0QzZDcm9zRkdpdzRKdHNIb2VrbGhRWS9GRjVJMXNiMlpRb28xcWFFYTZLRDZkQ1BtUmZ6WWRaM0ZaNjc0Uk5EOEJOYXFjbHN1U0hvZXQ2eGt1ZjBibkJvY3RtVTMrSlVxK1FUaDI0QTBDdXVrU05RaWpUWGtKTnVuK21yNXRZSTNmeFRlYXhURXc0T2xrZnppZUlxT3lUVDMzR1NUMmhvay90aG10aVFMcEkwa0lkNVNzMnhWdnR1NE9wTFoxTFcxSXc5amRCVExWSk5EajNIaWFHRVVQNE5IZnFCMitldjF6d0ppbHNKcE10anl2R2p2LzNHai83NkwzN3l3Vi9CQldxTWE3Y0h2MnFSekluMmdWYzUxOHZKM2RUVlFibmVDNFR2dGowTDU0ZzV4djFEZ3NRUkNEcmJjRU9mV3p4OW5VS2VUcWhUK3M2VHZab05abE5OaXFZZTF4SVN0V1pCRnNERnBzZWVNZWZNZWNqOGpCd05neW9jb05VanV0OWpIa0x2NWFFNmcxTEl0a3NTMEQrREFjSmlXbGRLT0hEVjd3VDhOSFMyMjl1Y24xUFlUTmJkaVBhRlUwODNtT2xnaXpJZm5VTUJkTHpKL0pqWFZqbDFPcGxDOG01WG9nS0xDb0cyNmVqamVRYXlOQXk4aGlmaTkxRTVhcDUwVE9tSERSOXlKbUZyeHM1VGtqVlJYTUpBNVZ3NWt5TTNzNC9kWTNscUk0UENxWTBvZit5R21YOU92eTE4eWhJbkRCT0YxUFZicDNwbXF0NWpJblJqRkxrM01rM2ErVlhiQm9BRDJ4R3lVamhxUnIzZGJwMFNUUEN6dXhvT2R3ZWNlRXVPUXBmZ3B5WlBVRFY0SzJJd0dPVWg3c2drbGhwWFJldFB2dlVISDMvOWV6Lys0QitnYzVVU3ppRURxbnl6K3dnSTZieTdYMDIwaytTZU5EOGY1aUU5aS9VTTE1SVVaeHJVcWhVUy9zL0RhQlJCS0NPcUthT2Z1QnhrOE1vbW5aWXNqbDVDM28wSzIyNWdrcWt2RE5QMFVUaGEzSXVKVEVxUXlnVkxvVFdnUEpZdm1JcUs1cGo1b05wNFRMV0szODB5Y2Q4TktXN2hwVFZPS2M0M2xsNnE4YWdudWZxSTh6dXBSelpFbHhMRUZqOGhYdExMT2gvWmRhVjZJTUxRTHM3eitUY3YyRkxEN1JLZ2VPbmtPWkhZMkpSMXJVZWdoRUNZVFFIRFFJc3JxcGhWdGF4UngxYldwRURrckhlY1J1eDdEQW91S0o3QjljcVREKzh5MTltS2NjRlc3SnQ2TFcyN3ZvaFliQlhGdTNmM09LWGFNd05KTCsvNlp4QmhzVVg2b29KZ2hHcXYyYjBGZzNUTzcvZGtxWklVRDJhSFlXNmZraVNseHlPZTdOeldWR01pUlNGY1p1QlBycndoenV0M05iUyt6UStEekYra0FHdTdPR0d0Vmg4T3RGdDVQaGQwQ0Rnb0N4M3pjRUNaREpGYVR2UGovZlV6VW5XT0Z6d2djZWtyRlowMVRLMFN4V3pFL2I3TGdSNlRhOTd6YnhPTDBoR1lVdE5hVEFHWDYyTzVoakUydXBKM3hhYW1GcmJJYUpUT3RqZzdzdm9LaTJZV3NUbFJZVXQySFNqSU5QMit2TDJ4cHpWSTVNMkZmSlZtN0VmQ0lTVGVvcENNdFRJcnVWU1J6eFV6cXZ5UjRnUFlyQzZjNFFoWHN3NkVPdDM5TjVxb0h4Wmx3bmQyWlpMM1NUa2lNc3ZFaFFOQlZmRXA4YjZlUTdvMytwMG9aKzFPVHdMSFpoVlZxQkVLbjYxUlp0YjRRM2d0RFd1MnRCck1PK2JTSzlvOTEycmFUS0hEZys5cnd1dlFWODNoVUUzYkNVTDE2dklhR1Yvblo1cG1MUTExZzB4TFRtMllDV0I2NDhURXFEVDhQWVQvM0VQUjg1MmtMSlNobVNuc3R2d2hwR0FlSEV0TGpHQ0dNdzhsNnB6ZHI3RnNLdWVGMkdSTEJ2QUpsZGN5Z1F1cVkySHM3VFl4b05QNzZ3UXNaTEc0bmFlejA5c2IreVlOVFp0dlRyVVRlM0RIUzN1aXJUMUhkWTVUa2pTNmk3aDdmaGZ4bHRtSzJEMzJtQ3c2clU0alNacng5SWwvL2RQdi9makRyMFAzVlo5MWlkREJqNXdxY1FxZngvM1BLSmNMa3R6YkxWVHYyR2NEWSs5TE5XMjF5VHJqbmI3VzFCVWNKMDNhSnZPVXJuc2N5andvb3F5ak8xNlhRQUQ3NVBLVzBlMml3ckZtRm82L1Fxa3FsOHZ2TlVRYVZadXVwSFlodVJHSzhNV0dWRVZFR1puaTJHT3lYQWxPWE4wVGxCRkJ6TFQ5RE5ZbXgvZjR1MW5mblNiT2pLN1gvTHJvZEpMS3JSV3BJRUJRYlBpVWt2eVI5VXZ4SVZXb011L0x2b2J1RU1xcTJtb0NFVlpUZ2tzWk05YW15UzVGN2lnR1U5NW03YjUwQ3QrQXNZVzBCYUxVYWR6eGtpeE1lNmRjUXQvSVZtZHhsMUJGTm1xTkZuU1RlZVJnSjVKZHFFMmh6U1lCSXFQQ0RoWnRCcktmMGtxMmFIbENYNWlINmZ4K2xaYnI5VVE4MUdDNmEyUDFwN3V5TTVUa3dXdENzOFFoeEdYSUI2VjlJcW5FRkdUeTdISWNvWksxWHN3bklLcjR5S1BBZU5JSnduS0VacDNRN1ppSVhFNHc3bjdDNzA2elBIZURVc2F4WlY0VE9TYXFoTTl4MWljZUREeCtLa1RIVGlSSmMvbE8ybDNPMkdaSzYwZjR6a3pORGEya3NwU2pHOXZFVldOQ2hrWU9VNHFwL3VtdS9jeVZyOVVDU25aaHoxbDF2VDRsWDdKdUZFZGFrWFZPckxNckV6WUptVEdtRy9VZTkwTE84b1ROZkVoNHJTN2Rjc3VsV0R2bnNkTDFCanR4Tzg3ZXNyTW1PckprMEZkQVZrbDdBL0tQY0xrdFVORk5OT0pJUm00S29Bc3lUWXNBUlI3M24vK2x6c0l5WlRvUFdGZXI4OWFvNTF5NWRua3hTU1d5REQ1ZytxVEZkZUZGVk94VHFkak5PbFhKNUZBQ0xoQ1NkWS95eDNncDdRUjl1dU1ibVN4MUlGZlRoOG8yK2N2WnNBWmZOZHVocGc4R0F4SGswK0dTdlBnSmVTdFFYaHdabmpPWHdBcWhQUEZnTTJjMWU0TDdycTRVbW9Ib2syZngyQXpKT2FOcXkzVlRMKyt4TThEYWxUM2VKbzdGbGZjYlRLKzRSOU9OcEZUZjhCSGJzM3NpYVVqbmQxcVFoWUl2VVR3Z0hWbWxuNFloelIvVDUweXJwQmlzdVUrc2pleVFMMFFXaCtzSDUxNjlpak00Wm01dmN0OFB6N3dUWmo5b21EUTd3a3ZXczkrTU42dksvK1B2Zk92akQvOHdxL3hmcVZMZEwyUDZnSWRXNEp1b01sdjFEbDFKNGdqNGRKdXA2aDJ4THAwV2g3cHJQWlQ2REI4c1Y3MnU4TisxWDE2NHBaNDErN0ppTkxwV1pEeG9PWGxxWlBadXFxRmt4WkJYTWVXOHNtNFE2QVhTYnpWem96Q21MSjg1L3J3c3FacTlzMUNXYlVaK1hDVElJbXozMEFteCttVUx5Y1B2ak16a1JMMWVsN3RTbE4waExHVkh3MUYxczA0WmtnZ0I0U0dlVWRvRjk4MDZweENRRGVaRzh2ampIT3dyWkp4SXcxbjFRRmtnaythVnJKRSt5amlxekd0d1h6ei9FTForZFZSTHdIbmRHZHA1TnNWTU00TSs2R2VkZ1VzUGhLYmZWR0ZhWGJncGRCbUJWU2FPUGdqSkx3VUVXMGgvZkNCNyt4RnovVDczNFFNVEtRSERxbGExZTMyTERNcVRaZzdlYzdpWFdCd3hlRzFMOE1PY3ZWR2hLaXE5OWZ6dkR3OXg0cGUzeFpra0cxeUJ1VXNKS0l3UEthdTdMT2RmTjNmZ2RtdGNFRE1hRUErbUlxYnQ4Z2lITFJOczlrbWgzQVRGNG81d0hqeDF6Y25wSFJFNTFSUG02a2RYVFUyY1NrMFdld1J2WmpWMTAzeHNTMmZxdXhGRjdMMUhtNitwZzVWeVRlN24zOVpvbStzdFdrM0h3S1dpSTE5OVhtN0dHdnR1R3lnOUNna0lkWWtnTzJzeHNTQk5VVnFTWWZuUjNaQ29nejdoZkVyWXBJNnRkejZtV29NZ2FmbEJPVkxVc0oyeGpxbFczQXVPV1I5czV0WitqN01vU0VxSWZ1d2puZ3pHTS9sSXZxK2pFYzhxdVNRYXVsMW10dXltSC9PQXVLNnJPY1BORis5OTU4WDczOGUvdi8vaS9UOTc4Zjc3TDk3N214ZnYvUjNNb21ENFBtQTRFRWV5ZzVsN1VEVlJIZVRmZTZBaW5zbFhxZksxVGFzTzF5MnBKaVlMSWovVDhxSkordXltN3MwVUh1OStDajVTbmRkSlhvWXkzb01nMWhoUUJyeS9LWGpQeTFxdXVSZDZhaFRqWnZGYWxEMEx2UlI4djA2QlRmQmlQelFtQkNYaXB3c3QraHFkOXJpMlNybmVZNFEzZEs0RHF1bzA5WjJwZTl5MWVuUEFrRDErSk44TDBOWGRiSjI4a254cElObUk1cUc1dWR3N2F6ZVRVblNJSStjcHlMU0dYcXpWa00rL3lObXNWK1J1TnVMajRSY0J6QUI3a0Q0Z3l5dVBXQ2lWcWdraWFTQ2RXdlZZbjZUUmo4VlhaUis5UjNBWnNZeWRyTG1IaDZIVG9xaEhoTXFPYThkOGJVV1h0b3JrUmtnS3R3MGtScW4wTDEvOVptZ1VGK2xWcTFReHVpYzUvcHJNMm04VEx1a09mdElGR1VwOUpjQzJXVlJ0OUpNSGt2bmkvK29HOFNOSjd4dDhtTnRQYkxKQnJ2emNKSmJuaHowUWw0VXRuanlaUHlldjNqUTdrZWVoMTAycW5idVV0eU5uYzVsWSt3T1Bmck53ZDJtYlhMSEhpQUxLOXNQd0tjc0VKV1JLY1dTaHZueFcwV2RQelhEWTN0MXBiT2gzRkthM3FhNzBSWi9wZCtYMGhPbUMyMmNTTFYxaGRXRXJPK3lwQ0ljYnlWY2tmOWRVekd6UEp1OUYxTzBlUUhsSHZnU3lMa3Q0bysrWUV2MXFsTHhrYXI1N1Y5aDkxSFRTRnl4eFpFcGhzbDJ3blc4WGxKcWN0WHNESy8xZFJUSkxnMmE5N2pqN3VsVlh3SStQTnZYS1BlWjJyQWNzcFNZNU1kVVhudWxlVGVIWnAxdG9CcXdyRzBUcUJNU0QwUzljVkkyK0VXVnp5U3hDWU1ZOTk5a3oyZ1lNWWsrY3lycitqcE02M0JGbG5jNHdsQzd0eFZGWGxnd2orakNGRmlNWW9QU29TZmtyTGFsMnFVd21uektNcHZoenVaWktnNGV1Zmx6d0JhdW44cnFrRm96QU51UlNZaVAwMDB2dDkxVmJBenFDN25lbzlrblRhSjlNN3JPUVptSHgrWDFwY1RlSnRaQ0FySjN4Z3YyZTVCcU9zeDUzc2tmejgvSkJKL0VITDhrcFJzdFhQbzh4SWZYU3ZuN2RjVUcrUTlNaUFpWnA5YXJiemhXdzFvdWN4TmlDcmxWK1dYeGdROEtpc0hLTzljWlk3bzFFb3pZNTc5V0FUY0lvcHBzYitpME1RVm1wTDZ2dFhHYStkY0R3SkdHa2dTc0hsQWdDU2huQ2ZGWHJKckdPaUZKSDB2OUsrdXRVdlQwMVU4S0J6TGZuUFU1ZFBPZ1JnM1FPaEhlVWtrQktjL20rSW5tSjVIL25JT3ZWZzREdURJaHZVRzBobi9HbUpxSkFUZDUySDd2d2V6VGtDL0lmMGZoakduOUVZNkNHb0NFSjFsczBIdE40UkdPUFJwUEdsaHFiTkRiVWFOQ29xVkdsUVd1UC9hNGFYMUxqdDJuOEZvM2ZwUEVidVhHZnhxK3I4V3ZXK0ZVMVhsUGozam5qcmpYdTBIZzFONzRvWTB5TlY4NFpqb1FIYTl6T2paZWsvYzhaTjZ4eFBUZVcxRmc4WjF3N1oxejlPY2VWRVdQaFU4YjhpREdYRzVWelJ2bm5HS1ZmWUJUL2g4YnNmMlBNL0FLajhEbU42Zi9GTWZVNWpzbGZnakh4U3pURy93K015LzgvUHZkUmtueGdwWHo3b3kvLzI5ZGVYaWwvNWQ1UC8vRWJYMWtwZnkyWldDa1AvdndIaFRmZlhTa1gzcFIvV3ltL2tmeFpxU1NYdmFhLzQvNktuTDczSDlsNjM1Ui8vbVNsTEtkLytqeTdUKzFUa3BmZC9paTdUcTFYK3VIYWQ2ODgrK0ZLWlN6NWs4bGh5NFg5NWRWcjMxMHBKV0srbWMwcnVlZlVaeVc1N01wS1NjbUpmZkRkbGhmcmxxV1VYLzczbFVvaTdsNG1CL1NGODZuMUsxS0t3UWNycFgrU2YvNTVwWkpzczU3dHB6NzFPZkQ3VWZKbnBham1LMG9leUtmM3grKzRYMzJXOExzNmIra2JpWUNaM3RVK2tBZHlGM0dlSHlRMzZ2TkNmc2lGKzh2VzlmcWN5bDVhdjBvUDJuK2dMOHZlRldXM1VxSyszOWUvNi9Xd2ppWDNrQjF4UDg2QjYyRi8rSk02bi81ZHlRVS8wZGREdjdZL1dPZlIrc1c4MGs4RmZnaS9objhpWG5BK3pHTTl4SVcxVDBudG8vME1jUVk5NG43b1U5bE42MG5aU2NjTHZsdjYxUG9iZ1FNVksrNWdyNUtTUytzVmZvcno0cHlXUGl1d0I5YURmTEFuL0FicllSOExyMkN2b3JXLzlrKzFYZ1c0b1BROHAvUlVzWEVDK2tFOElRNmhIL2lwaXJ0WjI5K3hIdXdHdThCZmxOd2FEeEJQc0QvT2hmV3MvYlJmd1c3MmV0Q3ZaVmNiQnl1V2ZiWGMrRVI4NFQ2RkswV3NCem1VUHhmaFQwb2ZPajdnQi9Bckt5L1ljbXA3V3ppTGVLbFllR0pmcC8wRG44QlorSStWSit4OHBQRkN5YVA5Q3ZrQWNXbmpuZEo3RWV0QWY4cHVPbzdoOTdBejhGYkpCMXkyOGFWaWZjSWVlaDJjRC9hMDVNWTVFRjg2VHdBdkVLZUlROWdGNThiOVNsN1l1MkxqQ3ZhMTQ4V09YeXZ2NkxnRnp1RmNrRS9wZVI1K0FMOUNYT0M3aGVQd1U2eWo4UmZ5QWs5eFBmQUgvcW8rdFYxaEYraEYzYS85U08xWFVQWXZ3RTZJRyt3UHZxUDBNWXQ4QzMrSEh0VHZSZVJueEJmaUR2SlpjWTc5NXZBZGNtSmZLdy9xUEFUL1VIckd1a1hndEpWM1pyRWU1SUkrNFMvd2YvZ2I0Z3Qyc3VJVU9HdnpMdGl2cU5hSHZ1Qi9GYXdQdkFYT0tYdHBPZFQ1a1BkbmxkMktsaC9ZOHBWcy80WDk0US9RdDFvSGVpOVovcXZ0cno0MUxzSStzTHZGZCtlQUwrQnZpQmZMYjNEK29vVzdXczg0Ri9Ta3pxL2pRWjFyVnVsdkR2WUczc1BQN1h5Ti9lMjR4aWZpQjdnQ3ZNYjEwQnY4RXAvZ2pUWS9CZzRnTGl5OGhYd0Y2Tm15cjg1YkZoK0ZYUE9ZUnp6Qy8yeDh0SGs4OEJuNmhaeEtMc1FyL0dUVzRnbmFuNVVmd0E2UUUvdkIvaHEvMUxvenNDLzBoL3ZneDBvTzZBUDRwT01PK3Jic0NQa2dOL0FROFROVWg2QWVndjZCTHppZjhwdWlGVGVRQzNpSFQzMmZWUi9PMlhuYjlrdXJmb0gvMlhiVmZCSDJnRHpBQnlVbjdLSDVrRzBQSzg2S09EZmlIdnpUNHRXSVYvd09PK2o3TGQ1bjh4REVDWEJ4cUQ1U2VnRmYxWEdhNnNINjMrV00rOGtMS0dsaitKS2FuQjVZVDRIbmt3ZWM3eHlldldQL2NsMVB2TU5PZU1DNi9KMGdlVzB4dERhYURzVHBNamFUM2QyTFg2Vi9mZkxKZi83TWxxZ3RYNjlRRW1HeTBHRVJXejZTN3pmUk4vdVdTVEZJSDVDTVhaUjk4WEhyNWd1Qk5WR09mU2xKNTM2N0Yvdkg5MzluTE8zUFhrZ3RsMGgzSVgyV2dyL0wvNXVRM1BMaUoycXBjVHlpNDM0Mys0OWp4ejEycUYrdktNa0gzL0xBeS9JRkc3d2RVYURaY0RrU2tYNlNYMmdMRHpQSjJjWis5bDhscGVDMThFZ0FBQT09In0= -->
 <div data-pagedtable="false">
@@ -2093,30 +2117,41 @@ top_10_publishers &lt;- books_clean %&gt;%
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbiAgIyBmaWx0ZXIoYm9va3NfYXV0aG9yZWQgPiAxMCkgJT4lIFxuICAjc2xpY2VfbWF4KGF1dGhvcl9hdmVyYWdlX3Jldmlld3MsIG4gPSAxMCkgJT4lIFxuICAjc2VsZWN0KGF1dGhvcnMsIGF1dGhvcl9hdmVyYWdlX3Jldmlld3MpXG4gIFxuICBcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbk5BXG5OQVxuTkFcbk5BXG5OQVxuYGBgIn0= -->
+<pre class="r"><code>NA
+NA
+NA
+NA
+NA
+NA</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="how-about-a-random-specific-query." class="section level1">
+<h1>8. How about a random specific query.</h1>
+<p>Like find the most text-reviewed books in the 90’s by the publisher
+Vintage?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5ib29rc19jbGVhbiAlPiUgXG4gIG11dGF0ZShwdWJfZGF0ZSA9IGFueWRhdGUocHVibGljYXRpb25fZGF0ZSksIFxuICAgICAgICAgeWVhcl93cml0dGVuID0geWVhcihwdWJfZGF0ZSkpICU+JSBcbiAgZmlsdGVyKHllYXJfd3JpdHRlbiA+PSAxOTkwICZcbiAgICAgICAgIHllYXJfd3JpdHRlbiA8MjAwMCAmXG4gICAgICAgICAgIHB1Ymxpc2hlciA9PSBcIlZpbnRhZ2VcIikgJT4lIFxuICBzZWxlY3QodGl0bGUsIHRleHRfcmV2aWV3c19jb3VudCkgJT4lIFxuICBzbGljZV9tYXgodGV4dF9yZXZpZXdzX2NvdW50LCBuID0gMjApXG4gIFxuXG5gYGAifQ== -->
 <pre class="r"><code>
-
-  # filter(books_authored &gt; 10) %&gt;% 
-  #slice_max(author_average_reviews, n = 10) %&gt;% 
-  #select(authors, author_average_reviews)
-  
+books_clean %&gt;% 
+  mutate(pub_date = anydate(publication_date), 
+         year_written = year(pub_date)) %&gt;% 
+  filter(year_written &gt;= 1990 &amp;
+         year_written &lt;2000 &amp;
+           publisher == &quot;Vintage&quot;) %&gt;% 
+  select(title, text_reviews_count) %&gt;% 
+  slice_max(text_reviews_count, n = 20)
   
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="lets-play-about-with-number-of-reviews-and-year-of-publication" class="section level1">
-<h1>Lets play about with number of reviews and year of publication</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm9va3NfY2xlYW4gJT4lIFxuICBcblxuXG5gYGAifQ== -->
-<pre class="r"><code>books_clean %&gt;% 
-  
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
+<div id="section" class="section level1">
+<h1>9.</h1>
 </div>
 <div id="do-authors-always-go-with-the-same-publisher-or-do-they-move-around-publishers" class="section level1">
 <h1>Do authors always go with the same publisher or do they move around
@@ -2144,7 +2179,7 @@ publishers</h1>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIExvYWQgTGlicmFyaWVzIGFuZCBEYXRhDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KHNraW1yKQ0KbGlicmFyeShqYW5pdG9yKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpsaWJyYXJ5KGFueXRpbWUpDQpsaWJyYXJ5KGdncGxvdDIpDQpib29rcyA8LSByZWFkLmNzdigiYm9va3MuY3N2IikNCmBgYA0KDQojIEEgZmlyc3QgbG9vayBhbmQgaW5pdGlhbCB0ZXN0cyBvbiBib29rcy5jc3YNCg0KYGBge3J9DQojSSB1c2VkIHRoZXNlIDMgZnVuY3Rpb25zIHRvIGdldCBhbiBpbml0aWFsIGlkZWEgb2YgdGhlIGRhdGFzZXQNCiMgZ2xpbXBzZShib29rcykNCiMgc3VtbWFyeShib29rcykNCiMgc2tpbShib29rcykNCg0KDQojIExldHMgZG8gYSBjb3VudCBvZiBOL0EgYW5kIG1pc3NpbmcgdmFsdWVzIGV0Yw0KDQpib29rcyAlPiUgDQogIHN1bW1hcmlzZShhY3Jvc3MoLmZucyA9IH4gc3VtKGlzLm5hKC54KSkpKSANCiMgdGhpcyBjb3VudHMgTi9BIHZhbHVlcyBhY3Jvc3MgYWxsIGNvbHVtbnMNCg0KYm9va3MgJT4lIA0KICBzdW1tYXJpc2UoYWNyb3NzKC5mbnMgPSB+IHN1bShpc19lbXB0eSgueCkpKSkgDQojIHRoaXMgY291bnRzIGVtcHR5IHZhbHVlcyBpbiBjb2x1bW5zDQoNCmJvb2tzICU+JSANCiAgc3VtbWFyaXNlKGFjcm9zcyguZm5zID0gfiBzdW0oLnggPT0gIiIpKSkNCiMgVGhpcyBjb3VudHMgZW1wdHkgc3RyaW5ncyBhY3Jvc3MgYWxsIGNvbHVtbnMNCg0KYm9va3MgJT4lIA0KICBzdW1tYXJpc2UoYWNyb3NzKC5mbnMgPSB+IHN1bSgueCA9PSAwLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmEucm0gPSBUKSkpDQojVGhpcyBjb3VudHMgYW55IDAgdmFsdWVzIGFjcm9zcyBhbGwgY29sdW1ucw0KDQoNCg0KYGBgDQoNCiMjIyBUZXh0IG9mIGZpcnN0IHRob3VnaHRzIGFib3V0IHRoZSBEYXRhDQoNCkxvb2tzIGxpa2UgbnVtX3BhZ2VzIGFuZCBhdmdfcmF0aW5nIHNob3VsZCBiZSBudW1lcmljIHJhdGhlciB0aGFuIGNoYXJhY3Rlci4NCg0KQ29sdW1uIG5hbWVzIGxvb2sgb2sgLSBhbGwgc2VsZi1leHBsYW5hdG9yeSAsIGFsbCBpbiBzbmFrZV9jYXNlIGFuZCBubyBjYXBpdGFscy4NCg0KVGhlcmUgYXJlIG9ubHkgOCBOL0EgdmFsdWVzIGluIHRoZSB3aG9sZSBkYXRhc2V0Lg0KDQpTaW5jZSBpdHMgMTExMzEgcm93cyBsZXRzIGNvbnNpZGVyIGRyb3BwaW5nIHRoZSA4IE4vQSByb3dzIC0gdHVybnMgb3V0IGFmdGVyDQphIGxvb2sgdGhhdCB0aGVzZSBhcmUgaW4gNCBvdGhlciB3aXNlIHVzZWxlc3Mgcm93cyAtIGxldHMgZHJvcC4NCg0KVGhlcmUgYXJlIHF1aXRlIGEgZmV3IDAgdmFsdWVzIGluIHRoZSBkYXRhOg0KbnVtX3BhZ2VzIGhhcyA3NiAiMCIgdmFsdWVzIC0gcGVyaGFwcyBjaGFuZ2UgdGhlc2UgdG8gdGhlIG1lYW4uDQpyYXRpbmdzX2NvdW50IGhhcyA4MCAiMCIgdmFsdWVzIC0gdGhpcyBpcyBmaW5lIGFzIHNvbWUgYm9va3MgaGF2ZSBubyByZXZpZXdzLg0KdGV4dF9yZXZpZXdfY291bnQgYWxzbyBmaW5lIHRvIGhhdmUgMCB2YWx1ZXMuDQpwdWJsaWNhdGlvbiBkYXRlIGhhcyAxICIwIiB2YWx1ZS4NCg0KIyMjIENsZWFuIGRhdGENCg0KYGBge3J9DQoNCiMgaGVyZSB3ZSBkcm9wIE5BJ3MsIGNsZWFuIG91dCBhIGNvdXBsZSBvZiByYW5kb20gcm93cw0KIyBjaGFuZ2UgbnVtcGFnZXMgdG8gaW50ZWdlciBmcm9tIGNoYXJhY3Rlcg0KIyBjaGFuZ2UgYXZlcmFnZSByYXRpbmcgdG8gbnVtZXJpYw0KIyBpbXB1dGUgaW50byBudW1fcGFnZXMgdGhlIG1lYW4gb2YgbnVtX3BhZ2VzIGNvbHVtbiBmb3IgMCB2YWx1ZXMNCg0KYm9va3NfY2xlYW4gPC0gYm9va3MgJT4lIA0KICBkcm9wX25hKCkgJT4lICMgTGV0cyBkcm9wIHRoZSA0IE4vQSByb3dzDQogIGZpbHRlcighbnVtX3BhZ2VzICVpbiUgYygiZW5nIiwgImVuLVVTIikpICU+JSANCiAgbXV0YXRlKG51bV9wYWdlcyA9IGFzLmludGVnZXIobnVtX3BhZ2VzKSwNCiAgICAgICAgIGF2ZXJhZ2VfcmF0aW5nID0gYXMubnVtZXJpYyhhdmVyYWdlX3JhdGluZykpICU+JSANCiAgbXV0YXRlKG51bV9wYWdlcyA9IGlmX2Vsc2UobnVtX3BhZ2VzID09IDAsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhcy5pbnRlZ2VyKG1lYW4obnVtX3BhZ2VzKSksIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICBudW1fcGFnZXMpKQ0KDQoNCg0KYm9va3NfY2xlYW4gJT4lICAjIHF1aWNrIGNoZWNrIHRvIHNlZSAiMCJzIGhhdmUgZ29uZSAoY2hhbmdlZCB0byBtZWFuKQ0Kc3VtbWFyaXNlKGFjcm9zcyguY29scyA9IG51bV9wYWdlcywgLmZucyA9IH4gc3VtKC54ID09IDAsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuYS5ybSA9IFQpKSkNCg0KDQpgYGANCg0KDQoNCiMjIyBNb3N0IHByb2xpZmljIGF1dGhvciAtIFRPUCAxMA0KDQpgYGB7cn0NCg0KYm9va3NfY2xlYW4gJT4lIA0KICBncm91cF9ieShhdXRob3JzKSAlPiUgDQogIHN1bW1hcmlzZShib29rc19hdXRob3JlZCA9IG4oKSkgJT4lIA0KICBzbGljZV9tYXgoYm9va3NfYXV0aG9yZWQsIG4gPSAxMCkNCg0KIyBUdXJucyBvdXQgaXQgcmV0dXJucyBhIHRvcC0xMyBhcyB0aGUgMTB0aCBwbGFjZSBpcyB0aWVkIDQgd2F5cw0KIyBXZSB3aWxsIGFsbG93IHRoaXMgYnV0IGNvdWxkIGNoYW5nZSBpdCB3aXRoIHRoZSAid2l0aF90aWVzIiBhcmd1bWVudA0KDQpgYGANCg0KDQojIyMgVE9QIDEwIGF1dGhvcnMgYnkgbWVhbiBvZiBhdmVyYWdlIHJldmlld3MsIGF0IGxlYXN0IDEwIGJvb2tzIHdyaXR0ZW4NCg0KRm9yIGZ1dHVyZSByZWZlcmVuY2UgdGhpcyBmdW5jdGlvbiBsaW5lIGJ5IGxpbmUgZG9lczoNCm1ha2UgMiBjb2x1bW5zOiBudW1iZXIgb2YgYm9va3Mgd3JpdHRlbiBwZXIgYXV0aG9yDQogICAgICAgICAgICAgICAgYXZlcmFnZSBhdXRob3IgcmV2aWV3cyBmcm9tIGFsbCBvZiB0aGVpciBib29rcw0KZmlsdGVycyBmb3IgdGhvc2UgYXV0aG9ycyB3aG8gaGF2ZSB3cml0dGVuIDEwIG9yIG1vcmUgYm9va3MNCnRha2VzIHRoZSB0b3AgMTAgdGhlbiBzZWxlY3RzIHRoZSBhdXRob3JzIGFuZCB0aGVpciBhdmVyYWdlIHJldmlld3MNCg0KDQoNCmBgYHtyfQ0KDQp0b3BfMTBfcmV2aWV3ZWRfYXV0aG9ycyA8LSBib29rc19jbGVhbiAlPiUgDQogIGdyb3VwX2J5KGF1dGhvcnMpICU+JSANCiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpLCANCiAgICAgICAgIGF1dGhvcl9hdmVyYWdlX3Jldmlld3MgPSByb3VuZChtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgMikpICU+JSANCiAgZmlsdGVyKGJvb2tzX2F1dGhvcmVkID4gMTApICU+JSANCiAgc2xpY2VfbWF4KGF1dGhvcl9hdmVyYWdlX3Jldmlld3MsIG4gPSAxMCkgJT4lIA0KICBzZWxlY3QoYXV0aG9ycywgYXV0aG9yX2F2ZXJhZ2VfcmV2aWV3cykNCiAgDQogIHRvcF8xMF9yZXZpZXdlZF9hdXRob3JzDQoNCmBgYA0KDQojIyMgV2hpY2ggbGFuZ3VhZ2UgdXNlZD8gU29ydCB0aGUgMTAgbW9zdCBwb3B1bGFyIGxhbmd1YWdlcyBhbmQgbGlzdCBieQ0KZGVzY2VuZGluZyBwZXJjZW50YWdlDQoNCmBgYHtyfQ0KDQpsYW5ndWFnZXNfcGVyY2VudCA8LSBib29rc19jbGVhbiAlPiUgDQogIGNvdW50KGxhbmd1YWdlX2NvZGUpICU+JSANCiAgYXJyYW5nZShkZXNjKG4pKSAlPiUgDQogIG11dGF0ZShwZXJjZW50YWdlX2xhbmd1YWdlID0gcm91bmQoKG4vc3VtKG4pKSoxMDAsIDIpKSAlPiUgDQogIHNsaWNlX21heChwZXJjZW50YWdlX2xhbmd1YWdlLCBuID0gMTApICU+JSANCiAgc2VsZWN0KGxhbmd1YWdlX2NvZGUsIHBlcmNlbnRhZ2VfbGFuZ3VhZ2UpDQoNCmxhbmd1YWdlc19wZXJjZW50DQoNCmBgYA0KDQojIyMgQmVzdCB5ZWFycyBmb3IgYm9vayB3cml0aW5nIGJ5IGF2ZXJhZ2UgcmV2aWV3IA0KDQphbnlkYXRlKCkgYW5kIGFueXRpbWUoKSB2ZXJ5IHVzZWZ1bCBmdW5jdGlvbnMgZm9yIHR1cm5pbmcgY2hhcmFjdGVyIGRhdGVzIGludG8gPGRhdGU+DQpmcm9tIHRoZSBwYWNrYWdlIGFueXRpbWUNCg0KYGBge3J9DQoNCmJvb2tzX2RhdGUgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBtdXRhdGUocHViX2RhdGUgPSBhbnlkYXRlKHB1YmxpY2F0aW9uX2RhdGUpLCB5ZWFyX3dyaXR0ZW4gPSB5ZWFyKHB1Yl9kYXRlKSkgJT4lIA0KICBncm91cF9ieSh5ZWFyX3dyaXR0ZW4pICU+JSANCiAgc3VtbWFyaXNlKHJhdGluZ19wZXJfeWVhciA9IHJvdW5kKG1lYW4oYXZlcmFnZV9yYXRpbmcpLCAyKSwgbm9fcmF0aW5nc19wZXJfeWVhciA9IG4oKSkgJT4lIA0KICBmaWx0ZXIobm9fcmF0aW5nc19wZXJfeWVhciA+PSA0KSAlPiUgDQogIHNsaWNlX21heChyYXRpbmdfcGVyX3llYXIsIG4gPSAxMCkNCiAgYm9va3NfZGF0ZQ0KICANCiAgIyB1bmdyb3VwKCkNCiAgIyAgZ2dwbG90KGJvb2tzX2RhdGUsIGFlcyh4ID0geWVhcl93cml0dGVuLCB5ID0gcmF0aW5nX3Blcl95ZWFyKSkgKw0KICAjICAgZ2VvbV9wb2ludCgpICsgDQogICMgICBnZW9tX3Ntb290aCgpDQogIA0KICANCiAgDQogDQoNCmBgYA0KDQojIE11bHRpcGxlIEF1dGhvcnMNCg0KSG93IG1hbnkgYm9va3MgYXJlIGF1dGhvcmVkIGJ5IG11bHRpcGxlIGF1dGhvcnM/IExvb2tpbmcgYXQgdGhlIGRhdGEgbXVsdGlwbGUgYXV0aG9ycyBhcmUgc2VwYXJhdGVkIGJ5ICIvIiBjaGFyYWN0ZXIgc28gaWYgd2UgY2hlY2sgZm9yIHRoYXQgaW4gZWFjaCBhdXRob3IgYW5kIGNvdW50IGl0IHNob3VsZCBnaXZlIHVzIHRoZSBkYXRhLg0KDQpIZXJlIHdlIHVzZSB0aGUgYmFzZSBSIGZ1bmN0aW9uIGdyZXBsIHdoaWNoIHRlc3RzIGlmIGEgc3RyaW5nIGlzIGNvbnRhaW5lZCBpbiBhIHZlY3RvciBhbmQgcmV0dXJucyBUL0YNCg0KYGBge3J9DQoNCmJvb2tfc29sb195biA8LSBib29rc19jbGVhbiAlPiUgDQogIHN1bW1hcmlzZShtdWx0aV9hdXRob3IgPSBncmVwbCgiLyIsIGJvb2tzX2NsZWFuJGF1dGhvcnMsIGZpeGVkID0gVCkpICU+JSANCiAgY291bnQobXVsdGlfYXV0aG9yKSAlPiUgDQogIG11dGF0ZShtdWx0aV9hdXRob3JlZCA9IGlmX2Vsc2UobXVsdGlfYXV0aG9yID09IEYsICJzb2xvIiwgIm11bHRpcGxlIGF1dGhvcnMiKSwgLmtlZXAgPSAidW51c2VkIikNCg0KDQpib29rX3NvbG9feW4NCg0KDQpgYGANCg0KIyBNb3N0IHdlbGwgcmV2aWV3ZWQgcHVibGlzaGVyPyBtb3N0IGJvb2tzIHB1Ymxpc2hlZCBieSBwdWJsaXNoZXINCg0KYGBge3J9DQoNCnRvcF9wdWJsaXNoZXJzIDwtIGJvb2tzX2NsZWFuICU+JSANCiAgZ3JvdXBfYnkocHVibGlzaGVyKSAlPiUgDQogIHN1bW1hcmlzZShib29rc19ieV9wdWJsaXNoZXIgPSBuKCksIA0KICAgICAgICAgICAgcHVibGlzaGVyX2F2ZXJhZ2VfcmV2aWV3cyA9IHJvdW5kKG1lYW4oYXZlcmFnZV9yYXRpbmcpLCAyKSkgJT4lIA0KICBmaWx0ZXIoYm9va3NfYnlfcHVibGlzaGVyID4gMykgJT4lIA0KICAjYXJyYW5nZShkZXNjKHB1Ymxpc2hlcl9hdmVyYWdlX3Jldmlld3MpKQ0KICBhcnJhbmdlKGRlc2MoYm9va3NfYnlfcHVibGlzaGVyKSkNCiAgdG9wX3B1Ymxpc2hlcnMNCg0KDQoNCiAgDQogIA0KDQpgYGANCg0KDQojIExldHMgcGxheSBhYm91dCB3aXRoIG51bWJlciBvZiByZXZpZXdzIGFuZCB5ZWFyIG9mIHB1YmxpY2F0aW9uDQoNCmBgYHtyfQ0KYm9va3NfY2xlYW4gJT4lIA0KICANCg0KDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCiMgRG8gYXV0aG9ycyBhbHdheXMgZ28gd2l0aCB0aGUgc2FtZSBwdWJsaXNoZXIgb3IgZG8gdGhleSBtb3ZlIGFyb3VuZCBwdWJsaXNoZXJzDQoNCmBgYHtyfQ0KIyANCiMgYm9va3NfY2xlYW4gJT4lIA0KIyAgIGdyb3VwX2J5KGF1dGhvcnMsIHB1Ymxpc2hlcikgJT4lIA0KIyAgIHN1bW1hcmlzZShwdWJsaXNoZXJfY291bnQgPSBzdW0obigpKSkNCiMgICANCiAgICAjIHVuaXF1ZSgpICU+JQ0KIyBncm91cF9ieShhdXRob3JzKSAlPiUNCiMgc3VtbWFyaXplKHZpc19jb3VudCA9IG4oKSkNCiAgDQogICMgICBzZWxlY3QoYXV0aG9ycywgcHVibGlzaGVyKSAlPiUgDQojICAgZ3JvdXBfYnkoYXV0aG9ycykgJT4lIA0KIyBkaXN0aW5jdCgpDQojICAgDQoNCg0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIExvYWQgTGlicmFyaWVzIGFuZCBEYXRhDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KHNraW1yKQ0KbGlicmFyeShqYW5pdG9yKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpsaWJyYXJ5KGFueXRpbWUpDQpsaWJyYXJ5KGdncGxvdDIpDQpib29rcyA8LSByZWFkLmNzdigiYm9va3MuY3N2IikNCmBgYA0KDQojIEEgZmlyc3QgbG9vayBhbmQgaW5pdGlhbCB0ZXN0cyBvbiBib29rcy5jc3YNCg0KYGBge3J9DQojSSB1c2VkIHRoZXNlIDMgZnVuY3Rpb25zIHRvIGdldCBhbiBpbml0aWFsIGlkZWEgb2YgdGhlIGRhdGFzZXQNCiMgZ2xpbXBzZShib29rcykNCiMgc3VtbWFyeShib29rcykNCiMgc2tpbShib29rcykNCg0KDQojIExldHMgZG8gYSBjb3VudCBvZiBOL0EgYW5kIG1pc3NpbmcgdmFsdWVzIGV0Yw0KDQpib29rcyAlPiUgDQogIHN1bW1hcmlzZShhY3Jvc3MoLmZucyA9IH4gc3VtKGlzLm5hKC54KSkpKSANCiMgdGhpcyBjb3VudHMgTi9BIHZhbHVlcyBhY3Jvc3MgYWxsIGNvbHVtbnMNCg0KYm9va3MgJT4lIA0KICBzdW1tYXJpc2UoYWNyb3NzKC5mbnMgPSB+IHN1bShpc19lbXB0eSgueCkpKSkgDQojIHRoaXMgY291bnRzIGVtcHR5IHZhbHVlcyBpbiBjb2x1bW5zDQoNCmJvb2tzICU+JSANCiAgc3VtbWFyaXNlKGFjcm9zcyguZm5zID0gfiBzdW0oLnggPT0gIiIpKSkNCiMgVGhpcyBjb3VudHMgZW1wdHkgc3RyaW5ncyBhY3Jvc3MgYWxsIGNvbHVtbnMNCg0KYm9va3MgJT4lIA0KICBzdW1tYXJpc2UoYWNyb3NzKC5mbnMgPSB+IHN1bSgueCA9PSAwLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmEucm0gPSBUKSkpDQojVGhpcyBjb3VudHMgYW55IDAgdmFsdWVzIGFjcm9zcyBhbGwgY29sdW1ucw0KDQoNCg0KYGBgDQoNCiMgRmlyc3QgdGhvdWdodHMgYWJvdXQgdGhlIERhdGENCg0KTG9va3MgbGlrZSBudW1fcGFnZXMgYW5kIGF2Z19yYXRpbmcgc2hvdWxkIGJlIG51bWVyaWMgcmF0aGVyIHRoYW4gY2hhcmFjdGVyLg0KDQpDb2x1bW4gbmFtZXMgbG9vayBvayAtIGFsbCBzZWxmLWV4cGxhbmF0b3J5ICwgYWxsIGluIHNuYWtlX2Nhc2UgYW5kIG5vIGNhcGl0YWxzLg0KDQpUaGVyZSBhcmUgb25seSA4IE4vQSB2YWx1ZXMgaW4gdGhlIHdob2xlIGRhdGFzZXQuDQoNClNpbmNlIGl0cyAxMTEzMSByb3dzIGxldHMgY29uc2lkZXIgZHJvcHBpbmcgdGhlIDggTi9BIHJvd3MgLSB0dXJucyBvdXQgYWZ0ZXINCmEgbG9vayB0aGF0IHRoZXNlIGFyZSBpbiA0IG90aGVyd2lzZSB1c2VsZXNzIHJvd3MgLSBsZXRzIGRyb3AuDQoNClRoZXJlIGFyZSBxdWl0ZSBhIGZldyAwIHZhbHVlcyBpbiB0aGUgZGF0YToNCm51bV9wYWdlcyBoYXMgNzYgIjAiIHZhbHVlcyAtIHBlcmhhcHMgY2hhbmdlIHRoZXNlIHRvIHRoZSBtZWFuLg0KcmF0aW5nc19jb3VudCBoYXMgODAgIjAiIHZhbHVlcyAtIHRoaXMgaXMgZmluZSBhcyBzb21lIGJvb2tzIGhhdmUgbm8gcmV2aWV3cy4NCnRleHRfcmV2aWV3X2NvdW50IGFsc28gZmluZSB0byBoYXZlIDAgdmFsdWVzLg0KcHVibGljYXRpb24gZGF0ZSBoYXMgMSAiMCIgdmFsdWUuDQoNCiMgQ2xlYW4gZGF0YQ0KDQpgYGB7cn0NCg0KIyBoZXJlIHdlIGRyb3AgTkEncywgY2xlYW4gb3V0IGEgY291cGxlIG9mIHJhbmRvbSByb3dzDQojIGNoYW5nZSBudW1wYWdlcyB0byBpbnRlZ2VyIGZyb20gY2hhcmFjdGVyDQojIGNoYW5nZSBhdmVyYWdlIHJhdGluZyB0byBudW1lcmljDQojIGltcHV0ZSBpbnRvIG51bV9wYWdlcyB0aGUgbWVhbiBvZiBudW1fcGFnZXMgY29sdW1uIGZvciAwIHZhbHVlcw0KDQpib29rc19jbGVhbiA8LSBib29rcyAlPiUgDQogIGRyb3BfbmEoKSAlPiUgIyBMZXRzIGRyb3AgdGhlIDQgTi9BIHJvd3MNCiAgZmlsdGVyKCFudW1fcGFnZXMgJWluJSBjKCJlbmciLCAiZW4tVVMiKSkgJT4lIA0KICBtdXRhdGUobnVtX3BhZ2VzID0gYXMuaW50ZWdlcihudW1fcGFnZXMpLA0KICAgICAgICAgYXZlcmFnZV9yYXRpbmcgPSBhcy5udW1lcmljKGF2ZXJhZ2VfcmF0aW5nKSkgJT4lIA0KICBtdXRhdGUobnVtX3BhZ2VzID0gaWZfZWxzZShudW1fcGFnZXMgPT0gMCwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFzLmludGVnZXIobWVhbihudW1fcGFnZXMpKSwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgIG51bV9wYWdlcykpDQoNCg0KDQpib29rc19jbGVhbiAlPiUgICMgcXVpY2sgY2hlY2sgdG8gc2VlICIwInMgaGF2ZSBnb25lIChjaGFuZ2VkIHRvIG1lYW4pDQpzdW1tYXJpc2UoYWNyb3NzKC5jb2xzID0gbnVtX3BhZ2VzLCAuZm5zID0gfiBzdW0oLnggPT0gMCwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG5hLnJtID0gVCkpKQ0KDQojIE9LIHdlIGNhbiBsaXZlIHdpdGggdGhpcyBkYXRhIGZvciB0aGUgbW9tZW50IGxldHMgc3RhcnQgc29tZXMgdGFza3MNCg0KYGBgDQoNCg0KDQojIDEuIE1vc3QgUHJvbGlmaWMgQXV0aG9yIC0gVE9QIDEwDQoNCmBgYHtyfQ0KDQpib29rc19jbGVhbiAlPiUgDQogIGdyb3VwX2J5KGF1dGhvcnMpICU+JSANCiAgc3VtbWFyaXNlKGJvb2tzX2F1dGhvcmVkID0gbigpKSAlPiUgDQogIHNsaWNlX21heChib29rc19hdXRob3JlZCwgbiA9IDEwKQ0KDQojIFR1cm5zIG91dCBpdCByZXR1cm5zIGEgdG9wLTEzIGFzIHRoZSAxMHRoIHBsYWNlIGlzIHRpZWQgNCB3YXlzDQojIFdlIHdpbGwgYWxsb3cgdGhpcyBidXQgY291bGQgY2hhbmdlIGl0IHdpdGggdGhlICJ3aXRoX3RpZXMiIGFyZ3VtZW50DQoNCmBgYA0KDQoNCiMgMi4gVE9QIDEwIGF1dGhvcnMgYnkgbWVhbiBvZiB0aGVpciBhdmVyYWdlIHJldmlld3MsIGF0IGxlYXN0IDMgYm9va3Mgd3JpdHRlbg0KDQpGb3IgZnV0dXJlIHJlZmVyZW5jZSB0aGlzIGZ1bmN0aW9uOg0KbWFrZSAyIGNvbHVtbnM6IG51bWJlciBvZiBib29rcyB3cml0dGVuIHBlciBhdXRob3INCiAgICAgICAgICAgICAgICBhdmVyYWdlIGF1dGhvciByZXZpZXdzIGZyb20gYWxsIG9mIHRoZWlyIGJvb2tzDQpmaWx0ZXJzIGZvciB0aG9zZSBhdXRob3JzIHdobyBoYXZlIHdyaXR0ZW4gMyBvciBtb3JlIGJvb2tzDQp0YWtlcyB0aGUgdG9wIDEwIHRoZW4gc2VsZWN0cyB0aGUgYXV0aG9ycyBhbmQgdGhlaXIgYXZlcmFnZSByZXZpZXdzDQoNCg0KDQpgYGB7cn0NCg0KdG9wXzEwX3Jldmlld2VkX2F1dGhvcnMgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBncm91cF9ieShhdXRob3JzKSAlPiUgDQogIHN1bW1hcmlzZShib29rc19hdXRob3JlZCA9IG4oKSwgDQogICAgICAgICBhdXRob3JfYXZlcmFnZV9yZXZpZXdzID0gcm91bmQobWVhbihhdmVyYWdlX3JhdGluZyksIDIpKSAlPiUgDQogIGZpbHRlcihib29rc19hdXRob3JlZCA+IDMpICU+JSANCiAgc2xpY2VfbWF4KGF1dGhvcl9hdmVyYWdlX3Jldmlld3MsIG4gPSAxMCkgJT4lIA0KICBzZWxlY3QoYXV0aG9ycywgYXV0aG9yX2F2ZXJhZ2VfcmV2aWV3cykNCiAgDQogIHRvcF8xMF9yZXZpZXdlZF9hdXRob3JzDQoNCmBgYA0KDQojIDMuIFdoaWNoIGxhbmd1YWdlIHVzZWQ/IFNvcnQgdGhlIDEwIG1vc3QgcG9wdWxhciBsYW5ndWFnZXMgYW5kIGxpc3QgYnkNCmRlc2NlbmRpbmcgcGVyY2VudGFnZQ0KDQpgYGB7cn0NCg0KbGFuZ3VhZ2VzX3BlcmNlbnQgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBjb3VudChsYW5ndWFnZV9jb2RlKSAlPiUgDQogIGFycmFuZ2UoZGVzYyhuKSkgJT4lIA0KICBtdXRhdGUocGVyY2VudGFnZV9sYW5ndWFnZSA9IHJvdW5kKChuL3N1bShuKSkqMTAwLCAyKSkgJT4lIA0KICBzbGljZV9tYXgocGVyY2VudGFnZV9sYW5ndWFnZSwgbiA9IDEwKSAlPiUgDQogIHNlbGVjdChsYW5ndWFnZV9jb2RlLCBwZXJjZW50YWdlX2xhbmd1YWdlKQ0KDQpsYW5ndWFnZXNfcGVyY2VudA0KDQpgYGANCg0KIyA0LiBCZXN0IHllYXJzIGZvciBib29rIHdyaXRpbmcgYnkgYXZlcmFnZSByZXZpZXcgDQoNCmFueWRhdGUoKSBhbmQgYW55dGltZSgpIHZlcnkgdXNlZnVsIGZ1bmN0aW9ucyBmb3IgdHVybmluZyBjaGFyYWN0ZXIgZGF0ZXMgaW50byA8ZGF0ZT4NCmZyb20gdGhlIHBhY2thZ2UgImFueXRpbWUiDQoNCkZpcnN0IHdlIGFkZCBjb2x1bW5zIHdoaWNoIGNsZWFuIHVwIHRoZSBwdWJsaXNoZXIgZGF0ZSBmcm9tIGEgY2hhcmFjdGVyIHRvIGEgPGRhdGU+DQpXZSBwdWxsIHRoZSB5ZWFyIGZyb20gdGhpcyB2YWx1ZSB0byBhbm90aGVyIGNvbHVtbiANClRoZW4gd2Ugc3VtbWFyaXNlIGNhbGN1bGF0aW5nIGF2ZXJhZ2UgcmF0aW5ncyBwZXIgeWVhciBwdWJsaXNoZWQgYW5kDQpudW1iZXIgb2YgcmF0aW5ncyBwZXIgeWVhci4gV2UgdGhlbiBmaWx0ZXIgZm9yIG9ubHkgdGhvc2Ugd2l0aCBtb3JlIHRoYW4gNCByYXRpbmdzIHBlciB5ZWFyDQphbmQgcmV0dXJuIHRoZSB0b3AgMTAgeWVhcnMuDQoNCg0KYGBge3J9DQoNCg0KDQoNCmJvb2tzX2RhdGUgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBtdXRhdGUocHViX2RhdGUgPSBhbnlkYXRlKHB1YmxpY2F0aW9uX2RhdGUpLCANCiAgICAgICAgIHllYXJfd3JpdHRlbiA9IHllYXIocHViX2RhdGUpKSAlPiUgDQogIGdyb3VwX2J5KHllYXJfd3JpdHRlbikgJT4lIA0KICBzdW1tYXJpc2UocmF0aW5nX3Blcl95ZWFyID0gcm91bmQobWVhbihhdmVyYWdlX3JhdGluZyksIDIpLCBub19yYXRpbmdzX3Blcl95ZWFyID0gbigpKSAlPiUgDQogIGZpbHRlcihub19yYXRpbmdzX3Blcl95ZWFyID49IDQpICU+JSANCiAgc2xpY2VfbWF4KHJhdGluZ19wZXJfeWVhciwgbiA9IDEwKQ0KICBib29rc19kYXRlDQogIA0KICAjIEkgaGFkIHRvIGhhdmUgYSB3ZWUgbG9vayBhdCB0aGlzIG9uIGEgdiBzaW1wbGUgZ3JhcGggDQogICMgdW5ncm91cCgpDQogICMgIGdncGxvdChib29rc19kYXRlLCBhZXMoeCA9IHllYXJfd3JpdHRlbiwgeSA9IHJhdGluZ19wZXJfeWVhcikpICsNCiAgIyAgIGdlb21fcG9pbnQoKSArIA0KICAjICAgZ2VvbV9zbW9vdGgoKQ0KICANCmBgYA0KDQojIDUuIE11bHRpcGxlIEF1dGhvcnMNCg0KSG93IG1hbnkgYm9va3MgYXJlIGF1dGhvcmVkIGJ5IG11bHRpcGxlIGF1dGhvcnM/IExvb2tpbmcgYXQgdGhlIGRhdGEgbXVsdGlwbGUgYXV0aG9ycyBhcmUgc2VwYXJhdGVkIGJ5ICIvIiBjaGFyYWN0ZXIgc28gaWYgd2UgY2hlY2sgZm9yIHRoYXQgaW4gZWFjaCBhdXRob3IgYW5kIGNvdW50IGl0IHNob3VsZCBnaXZlIHVzIHRoZSBkYXRhLg0KDQpIZXJlIHdlIHVzZSB0aGUgYmFzZSBSIGZ1bmN0aW9uIGdyZXBsIHdoaWNoIHRlc3RzIGlmIGEgc3RyaW5nIGlzIGNvbnRhaW5lZCBpbiBhIHZlY3RvciBhbmQgcmV0dXJucyBUL0YNCg0KYGBge3J9DQojIFN1bW1hcmlzZSBieSBhdXRob3JzIGNvbnRhaW5pbmcgYSAiLyIgc3ltYm9sICh0aGVzZSBzaG91bGQgYmUgbXVsdGktYXV0aG9yZWQpDQojIHRoZW4gY291bnQgZWFjaCBzaWRlIGFuZCBkbyBzb21lIHRpZHlpbmcgdXANCg0KYm9va19zb2xvX3luIDwtIGJvb2tzX2NsZWFuICU+JSANCiAgc3VtbWFyaXNlKG11bHRpX2F1dGhvciA9IGdyZXBsKCIvIiwgYm9va3NfY2xlYW4kYXV0aG9ycywgZml4ZWQgPSBUKSkgJT4lIA0KICBjb3VudChtdWx0aV9hdXRob3IpICU+JSANCiAgbXV0YXRlKG11bHRpX2F1dGhvcmVkID0gaWZfZWxzZShtdWx0aV9hdXRob3IgPT0gRiwgInNvbG8iLCAibXVsdGlwbGUgYXV0aG9ycyIpLCAua2VlcCA9ICJ1bnVzZWQiKQ0KDQoNCmJvb2tfc29sb195bg0KDQoNCmBgYA0KDQojIDYuIE1vcmUgbXVsdGlwbGUgYXV0aG9ycw0KDQpJJ20gbm90IG92ZXJseSBoYXBweSB3aXRoICM1IGFib3ZlLiBMZXRzIHJlZG8gaXQgYW5kIGNoZWNrIHRvIHNlZSBpZiBhdmVyYWdlIHJhdGluZyANCm9mIG11bHRpIGF1dGhvcmVkIGJvb2tzIGlzIGhpZ2hlciBvciBsb3dlciB0aGFuIHNvbG8gYXV0aG9ycyBvbiBhdmVyYWdlLg0KDQpgYGB7cn0NCmF2Z19yYXRpbmdfc29sbyA8LSBib29rc19jbGVhbiAlPiUgDQogIG11dGF0ZShzb2xvX2F1dGhvciA9IGdyZXBsKCIvIiwgYm9va3NfY2xlYW4kYXV0aG9ycywgZml4ZWQgPSBUKSkgJT4lIA0KICBmaWx0ZXIoc29sb19hdXRob3IgPT0gRikgJT4lIA0KICBzdW1tYXJpc2UoYXZnX3JhdGluZ19zb2xvID0gbWVhbihhdmVyYWdlX3JhdGluZyksIGNvdW50ID0gbigpKQ0KYXZnX3JhdGluZ19zb2xvDQoNCmF2Z19yYXRpbmdfbXVsdGkgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBtdXRhdGUoc29sb19hdXRob3IgPSBncmVwbCgiLyIsIGJvb2tzX2NsZWFuJGF1dGhvcnMsIGZpeGVkID0gVCkpICU+JSANCiAgZmlsdGVyKHNvbG9fYXV0aG9yID09IFQpICU+JSANCiAgc3VtbWFyaXNlKGF2Z19yYXRpbmdfbXVsdGkgPSBtZWFuKGF2ZXJhZ2VfcmF0aW5nKSwgY291bnQgPSBuKCkpDQphdmdfcmF0aW5nX211bHRpDQoNCiMgNjU2MSBzb2xvIHdyaXR0ZW4gYm9va3MsIDQ1NjIgbXVsdGlwbGUgYXV0aG9yZWQgYm9va3MNCiMgbXVsdGkgYXV0aG9yZWQgYm9va3Mgd2luIDMuOTYgdG8gMy45MSB0aG91Z2ggdGhlcmVzIG5vdCBtdWNoIGluIGl0DQpgYGANCg0KDQojIDcuIE1vc3Qgd2VsbCByZXZpZXdlZCBwdWJsaXNoZXI/IG1vc3QgYm9va3MgcHVibGlzaGVkIGJ5IHB1Ymxpc2hlcg0KDQpgYGB7cn0NCg0KIyBjb3VudHMgYm9va3MgYnkgcHVibGlzaGVyLCBhc3NpZ25zIGFuIGF2ZXJhZ2UgcmV2aWV3IGZvciBlYWNoIHB1Ymxpc2hlcg0KIyB0aGVuIGZpbHRlcnMgZm9yIGJvb2tzID4gMyBhbmQgYXJyYW5nZXMgYnkgbnVtYmVyIG9mIGJvb2tzIG9yIGF2ZyByZXZpZXcNCg0KdG9wX3B1Ymxpc2hlcnMgPC0gYm9va3NfY2xlYW4gJT4lIA0KICBncm91cF9ieShwdWJsaXNoZXIpICU+JSANCiAgc3VtbWFyaXNlKGJvb2tzX2J5X3B1Ymxpc2hlciA9IG4oKSwgDQogICAgICAgICAgICBwdWJsaXNoZXJfYXZlcmFnZV9yZXZpZXdzID0gcm91bmQobWVhbihhdmVyYWdlX3JhdGluZyksIDIpKSAlPiUgDQogIGZpbHRlcihib29rc19ieV9wdWJsaXNoZXIgPiAzKSAlPiUgDQogICNhcnJhbmdlKGRlc2MocHVibGlzaGVyX2F2ZXJhZ2VfcmV2aWV3cykpDQogIGFycmFuZ2UoZGVzYyhib29rc19ieV9wdWJsaXNoZXIpKQ0KICB0b3BfcHVibGlzaGVycw0KDQpgYGANCg0KDQojIDguIEhvdyBhYm91dCBhIHJhbmRvbSBzcGVjaWZpYyBxdWVyeS4gDQoNCkxpa2UgZmluZCB0aGUgbW9zdCB0ZXh0LXJldmlld2VkIGJvb2tzIGluIHRoZSA5MCdzIGJ5IHRoZSBwdWJsaXNoZXIgVmludGFnZT8NCg0KYGBge3J9DQoNCmJvb2tzX2NsZWFuICU+JSANCiAgbXV0YXRlKHB1Yl9kYXRlID0gYW55ZGF0ZShwdWJsaWNhdGlvbl9kYXRlKSwgDQogICAgICAgICB5ZWFyX3dyaXR0ZW4gPSB5ZWFyKHB1Yl9kYXRlKSkgJT4lIA0KICBmaWx0ZXIoeWVhcl93cml0dGVuID49IDE5OTAgJg0KICAgICAgICAgeWVhcl93cml0dGVuIDwyMDAwICYNCiAgICAgICAgICAgcHVibGlzaGVyID09ICJWaW50YWdlIikgJT4lIA0KICBzZWxlY3QodGl0bGUsIHRleHRfcmV2aWV3c19jb3VudCkgJT4lIA0KICBzbGljZV9tYXgodGV4dF9yZXZpZXdzX2NvdW50LCBuID0gMjApDQogIA0KDQpgYGANCg0KDQojIDkuDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KIyBEbyBhdXRob3JzIGFsd2F5cyBnbyB3aXRoIHRoZSBzYW1lIHB1Ymxpc2hlciBvciBkbyB0aGV5IG1vdmUgYXJvdW5kIHB1Ymxpc2hlcnMNCg0KYGBge3J9DQojIA0KIyBib29rc19jbGVhbiAlPiUgDQojICAgZ3JvdXBfYnkoYXV0aG9ycywgcHVibGlzaGVyKSAlPiUgDQojICAgc3VtbWFyaXNlKHB1Ymxpc2hlcl9jb3VudCA9IHN1bShuKCkpKQ0KIyAgIA0KICAgICMgdW5pcXVlKCkgJT4lDQojIGdyb3VwX2J5KGF1dGhvcnMpICU+JQ0KIyBzdW1tYXJpemUodmlzX2NvdW50ID0gbigpKQ0KICANCiAgIyAgIHNlbGVjdChhdXRob3JzLCBwdWJsaXNoZXIpICU+JSANCiMgICBncm91cF9ieShhdXRob3JzKSAlPiUgDQojIGRpc3RpbmN0KCkNCiMgICANCg0KDQpgYGANCg0K</div>
 
 
 
