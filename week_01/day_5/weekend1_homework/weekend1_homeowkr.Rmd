@@ -72,6 +72,8 @@ publication date has 1 "0" value.
 # change numpages to integer from character
 # change average rating to numeric
 # impute into num_pages the mean of num_pages column for 0 values
+# i came back to add pub_date which is a <date> column
+# also added year_written pulled from above pub_date value
 
 books_clean <- books %>% 
   drop_na() %>% # Lets drop the 4 N/A rows
@@ -80,7 +82,9 @@ books_clean <- books %>%
          average_rating = as.numeric(average_rating)) %>% 
   mutate(num_pages = if_else(num_pages == 0, 
                              as.integer(mean(num_pages)), 
-                             num_pages))
+                             num_pages)) %>% 
+  mutate(pub_date = anydate(publication_date), 
+         year_written = year(pub_date))
 
 
 
@@ -185,7 +189,9 @@ books_date <- books_clean %>%
 
 # 5. Multiple Authors
 
-How many books are authored by multiple authors? Looking at the data multiple authors are separated by "/" character so if we check for that in each author and count it should give us the data.
+How many books are authored by multiple authors? Looking at the data multiple 
+authors are separated by "/" character so if we check for that in each author 
+and count it should give us the data.
 
 Here we use the base R function grepl which tests if a string is contained in a vector and returns T/F
 
@@ -196,7 +202,10 @@ Here we use the base R function grepl which tests if a string is contained in a 
 book_solo_yn <- books_clean %>% 
   summarise(multi_author = grepl("/", books_clean$authors, fixed = T)) %>% 
   count(multi_author) %>% 
-  mutate(multi_authored = if_else(multi_author == F, "solo", "multiple authors"), .keep = "unused")
+  mutate(multi_authored = if_else(multi_author == F, 
+                                  "solo", 
+                                  "multiple authors"), 
+         .keep = "unused")
 
 
 book_solo_yn
@@ -265,41 +274,85 @@ books_clean %>%
 ```
 
 
-# 9.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Do authors always go with the same publisher or do they move around publishers
+# 9. Average time between books? Can we do this?
 
 ```{r}
-# 
-# books_clean %>% 
-#   group_by(authors, publisher) %>% 
-#   summarise(publisher_count = sum(n()))
-#   
-    # unique() %>%
-# group_by(authors) %>%
-# summarize(vis_count = n())
-  
-  #   select(authors, publisher) %>% 
-#   group_by(authors) %>% 
-# distinct()
-#   
+
+book_publish_speed <- books_clean %>% 
+  arrange(authors, pub_date) %>% 
+  group_by(authors) %>% 
+  mutate(last_book_pub_date = lag(pub_date),
+         books_written = n()) %>% 
+  filter(books_written >= 3) %>% # filter for >3 books written
+  mutate(time_between_books = pub_date - last_book_pub_date) %>% 
+  summarise(books_written = n(),
+            avg_time_per_author = mean((time_between_books), na.rm = T)) %>% 
+  mutate(avg_time_overall = mean(avg_time_per_author), 
+         difference_from_mean = avg_time_per_author - avg_time_overall) %>% 
+  arrange(desc(avg_time_per_author))
+
+
+# lets find the slowest authors
+book_publish_speed %>% 
+  slice_max(avg_time_per_author, n = 10)
+
+# lets find the fastest authors
+book_publish_speed %>% 
+  slice_min(avg_time_per_author, n = 10)
+
+# Although I think the general principle is sound it appears the data is not
+# quite clean enough for this operation. Nor does my theory take into accounts
+# republications of the same works years afterword or indeed multi language copies. 
 
 
 ```
+
+
+# 10. Any duplicate books?
+
+From number 9 above it appears there are multiple copies of some books. 
+Lets look and see
+
+```{r}
+
+books_clean %>% 
+  group_by(title) %>% 
+  summarise(count = n()) %>% 
+  filter(count > 1) %>% 
+  arrange(desc(count))
+
+# There are 487 books which appear to have multiple copies.
+# The record is 9 copies with "The Brothers Karamazov" and "The Iliad"
+# This would be republished books as well as multi-language copies
+
+```
+
+# 11. Best Sci-Fi book? 
+
+Arg - there are no genres! What if we search by 10 famous sci-Fi authors?
+This is a bit silly
+```{r}
+
+#lets add in 10 famous sci-fi authors
+
+sci_fi_authors <- c("Jules Verne", "H. G. Wells", "Aldous Huxley", 
+                    "Robert Heinlein", "Arthur C. Clarke", "Frank Herbert",
+                    "Isaac Asimov", "Ray Bradbury", "William Gibson",
+                    "Orson Scott Card")
+
+
+
+books_clean %>% 
+  distinct(title, .keep_all = T) %>% # filter out duplicate titles 
+  filter(authors %in% sci_fi_authors) %>% 
+  arrange(desc(average_rating) )
+  
+
+```
+
+
+
+
+
+
 
