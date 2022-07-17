@@ -274,7 +274,7 @@ books_clean %>%
 ```
 
 
-# 9. Average time between books? Can we do this?
+# 9. Average time between books published by author? Can we do this?
 
 ```{r}
 
