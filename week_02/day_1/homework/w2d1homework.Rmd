@@ -56,7 +56,10 @@ tables are kept. What does the resulting row number tell you?
 full_join(transaction_base, fraud_base)
  
 
-# row number is 10000, the size of transaction data. As fraud data is only 109 rows these all must match a row in transaction data. Quick look at the data shows this to be true and it makes sense - a small fraction of transactions would be flagged for fraud purposes. 
+# row number is 10000, the size of transaction data. As fraud data is only 109 rows 
+# these all must match a row in transaction data. Quick look at the data shows this 
+# to be true and it makes sense - a small fraction of transactions would be flagged 
+# for fraud purposes. 
 
 ```
 
@@ -77,7 +80,9 @@ semi_join(card_base, transaction_base, by = c("card_number" = "credit_card_id"))
 
 
 
-# I've tried it both ways and either way it simply returns the whole dataset on the left of the join argument. this does show that all credit cards have at least one transaction and also all the credit cards in the transaction dataset are in the credit card dataset
+# I've tried it both ways and either way it simply returns the whole dataset on the left
+# of the join argument. this does show that all credit cards have at least one transaction 
+# and also all the credit cards in the transaction dataset are in the credit card dataset
 ```
 
 
