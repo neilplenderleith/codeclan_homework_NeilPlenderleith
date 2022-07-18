@@ -12,7 +12,7 @@ library(janitor)
 library(lubridate)
 library(anytime)
 library(ggplot2)
-books <- read.csv("books.csv")
+books <- read_csv("books.csv")
 ```
 
 # A first look and initial tests on books.csv
@@ -64,6 +64,9 @@ ratings_count has 80 "0" values - this is fine as some books have no reviews.
 text_review_count also fine to have 0 values.
 publication date has 1 "0" value.
 
+lets change the publication_date to a <date> type, and pull the year from it in 
+a different column called year_written
+
 # Clean data
 
 ```{r}
@@ -77,7 +80,7 @@ publication date has 1 "0" value.
 
 books_clean <- books %>% 
   drop_na() %>% # Lets drop the 4 N/A rows
-  filter(!num_pages %in% c("eng", "en-US")) %>% 
+  filter(!num_pages %in% c("eng", "en-US")) %>% # rows entered incorrectly - delete
   mutate(num_pages = as.integer(num_pages),
          average_rating = as.numeric(average_rating)) %>% 
   mutate(num_pages = if_else(num_pages == 0, 
@@ -135,6 +138,8 @@ top_10_reviewed_authors <- books_clean %>%
   
   top_10_reviewed_authors
 
+# perhaps a better way to have filtered this would be by > 1000 reviews per books, say  
+  
 ```
 
 # 3. Which language used? Sort the 10 most popular languages and list by
@@ -150,6 +155,9 @@ languages_percent <- books_clean %>%
   select(language_code, percentage_language)
 
 languages_percent
+
+# should have added all the english type languages together - do if time
+# use function recode
 
 ```
 
@@ -174,7 +182,8 @@ books_date <- books_clean %>%
   mutate(pub_date = anydate(publication_date), 
          year_written = year(pub_date)) %>% 
   group_by(year_written) %>% 
-  summarise(rating_per_year = round(mean(average_rating), 2), no_ratings_per_year = n()) %>% 
+  summarise(rating_per_year = round(mean(average_rating), 2), 
+            no_ratings_per_year = n()) %>% 
   filter(no_ratings_per_year >= 4) %>% 
   slice_max(rating_per_year, n = 10)
   books_date
@@ -283,7 +292,7 @@ book_publish_speed <- books_clean %>%
   group_by(authors) %>% 
   mutate(last_book_pub_date = lag(pub_date),
          books_written = n()) %>% 
-  filter(books_written >= 3) %>% # filter for >3 books written
+  filter(books_written >= 3) %>% 
   mutate(time_between_books = pub_date - last_book_pub_date) %>% 
   summarise(books_written = n(),
             avg_time_per_author = mean((time_between_books), na.rm = T)) %>% 
@@ -301,7 +310,7 @@ book_publish_speed %>%
   slice_min(avg_time_per_author, n = 10)
 
 # Although I think the general principle is sound it appears the data is not
-# quite clean enough for this operation. Nor does my theory take into accounts
+# quite clean enough for this operation. Nor does my theory take into account
 # republications of the same works years afterword or indeed multi language copies. 
 
 
@@ -323,7 +332,7 @@ books_clean %>%
 
 # There are 487 books which appear to have multiple copies.
 # The record is 9 copies with "The Brothers Karamazov" and "The Iliad"
-# This would be republished books as well as multi-language copies
+# This would be republished books as well as multi-language copies presumably
 
 ```
 
@@ -345,7 +354,7 @@ sci_fi_authors <- c("Jules Verne", "H. G. Wells", "Aldous Huxley",
 books_clean %>% 
   distinct(title, .keep_all = T) %>% # filter out duplicate titles 
   filter(authors %in% sci_fi_authors) %>% 
-  arrange(desc(average_rating) )
+  arrange(desc(average_rating))
   
 
 ```
