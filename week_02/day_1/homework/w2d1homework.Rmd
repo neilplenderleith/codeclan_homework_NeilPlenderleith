@@ -29,6 +29,7 @@ card_base <- clean_names(card_base, case = "snake")
 customer_base <-clean_names(customer_base, case = "snake")
 fraud_base <- clean_names(fraud_base, case = "snake")
 transaction_base <- clean_names(transaction_base, case = "snake")
+
 ```
 
 # Question 2
@@ -108,7 +109,9 @@ hat_observations %>%
   slice_max(observation_count, n = 1) %>% 
   pull(date)
 
-# date is 18/6/2018, 9 berets were seen
+# should have grouped_by date after the filter then summarised by sum of observations
+
+# date is 18/6/2018, 9 white berets were seen
 ```
 
 
