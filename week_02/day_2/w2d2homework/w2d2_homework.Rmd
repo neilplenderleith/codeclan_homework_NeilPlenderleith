@@ -157,10 +157,14 @@ tweets %>%
   flatten_chr() # finds 256 twitter names
 
 # Check we've found them all by counting just "@" symbols
-# tweets %>% 
-#   pull(text) %>% 
-#   str_extract_all("@") %>% 
-#   flatten_chr() # find 256 plus some erroneous entries we can ignore
+# tweets %>%
+#   pull(text) %>%
+#   str_extract_all("@") %>%
+#   flatten_chr() %>% 
+#   nzchar() %>% 
+#   sum()
+# Theres definitely an easier way to do this but I'm sleepy and it works
+
 
 ```
 
