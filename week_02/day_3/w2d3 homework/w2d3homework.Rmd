@@ -113,6 +113,24 @@ too_many_ifs(22)
 # too_many_ifs(list("a"))
 
 
+# Solution - DONT ALWAYS NEED TO NEST IFS !!!!!!!!!!!!!!
+# also use the return function - this kicks it out of the loop with a specific value
+
+# answer_or_divide <- function(x) {
+#   if (is.character(x)) {
+#     return(paste("The answer is: ", x))
+#   }
+# 
+#   if (is.numeric(x)) {
+#     if (x < 10) {
+#       return(x)
+#     } else {
+#       return(x / 10)
+#     }
+#   }
+# 
+#   return("Invalid input")
+# }
 ```
 
 # Question 6.
@@ -147,11 +165,24 @@ vector_check(c("b", "a"), c("a", "b"))
 
 vector_check(c("b", "z"), c("a", "c"))
 
+
+# heres the solution - ifs dont always need to be nested! ah well its a learning experience
+# is_same_vector <- function(vector_1, vector_2) {
+#   if (all(vector_1 == vector_2)) {
+#     return("Exactly the same")
+#   }
+# 
+#   if (all(sort(vector_1) == sort(vector_2))) {
+#     return("The same")
+#   }
+# 
+#   return("Different")
+# }
+
 ```
 
 
 #2 Extension
-
 
 #Question 7.
 Write code that prints a multiplication table for numbers up to 12. i.e. there will be 12 rows and 12 columns, and each element should be the row number multiplied by the column number.
@@ -203,7 +234,7 @@ text_art <- function(x){
     sum_of_number <- sum(x == i)
     stars <- ("")
     for (j in 1:sum_of_number){
-      stars <- paste("*", stars)
+      stars <- paste0("*", stars)
     }
     cat(i, " | ", stars, "\n")
   }
@@ -221,5 +252,24 @@ text_art(a)
 text_art(b)
 
 text_art(c)
+
+# heres the solution! no second for loop needed you idiot
+
+# make_histogram <- function(x){
+#   
+#   distinct <- sort(unique(x))
+#   
+#   for (i in distinct){
+#     
+#     count <- sum(x == i)
+#     
+#     cat(i)
+#     cat(" | ")
+#     cat(rep("*", count))
+#     cat("\n")
+#     
+#   }
+#   
+# }
 
 ```
